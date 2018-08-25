@@ -1,0 +1,9 @@
+{
+    "verbose": true,
+    "watch": ["client"],
+    "execMap": {
+        "js": "npm run build",
+        "html": "npm run build:app:js",
+        "scss": "npm run build:css"
+    }
+}  

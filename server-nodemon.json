@@ -1,0 +1,7 @@
+{
+    "verbose": true,
+    "script": "server.js",
+    "watch": ["server", "index.js", "config"],
+    "ignore": ["server/public"],
+    "ext": "js json"
+}

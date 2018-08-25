@@ -4,7 +4,7 @@ var argv = require('./argv')
 var config = {
   ace: {
     tabSize: 2,
-    fontSize: 12,
+    fontSize: 20,
     theme: 'monokai',
     useSoftTabs: true
   }
