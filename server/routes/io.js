@@ -26,7 +26,11 @@ module.exports = [{
       const command = request.payload.command
       const args = spawnargs(command)
       // const proc = spawn(task.command, task.args, task.options)
-      const child = spawn(args[0], args.slice(1))
+      // Work around spawn syscall on winodws
+      // https://stackoverflow.com/questions/27688804/how-do-i-debug-error-spawn-enoent-on-node-js
+      const child = spawn(args[0], args.slice(1), {
+        shell: true
+      })
       const pid = child.pid
 
       child.on('error', (err) => {
