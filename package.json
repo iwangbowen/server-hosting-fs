@@ -38,6 +38,7 @@
     "chokidar": "1.4.3",
     "cross-spawn": "^6.0.5",
     "extend": "3.0.0",
+    "find-free-port": "^2.0.0",
     "font-awesome": "4.5.0",
     "glupe": "0.0.1",
     "good": "6.5.0",
@@ -68,9 +69,16 @@
     "wisk": "1.0.0"
   },
   "pkg": {
-    "targets": ["node10-win-x64"],
-    "scripts": ["server/*.js", "server/routes/**/*.js"],
-    "assets": ["server/{public,views}/**/*"]
+    "targets": [
+      "node10-win-x64"
+    ],
+    "scripts": [
+      "server/*.js",
+      "server/routes/**/*.js"
+    ],
+    "assets": [
+      "server/{public,views}/**/*"
+    ]
   },
   "repository": {
     "type": "git",
