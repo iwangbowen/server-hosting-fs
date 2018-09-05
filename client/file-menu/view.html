@@ -4,6 +4,12 @@
   </script>
   <ul if="file" class="dropdown-menu" style="{ top: model.y, left: model.x }">
     <li key="header" class="dropdown-header">{file.name}</li>
+    <!-- <li key="openWithUI">
+      <a onclick="{model.openWithBuilder()}"><i><i class="fa fa-eye"> Open With UI Builder</i></a>
+    </li>
+    <li key="openWithEditor">
+      <a onclick="{model.openWithEditor()}"><i><i class="fa fa-file-o"> Open With Editor</i></a>
+    </li> -->
     <li key="rename"><a onclick="{model.rename(file)}"><i class="fa fa-pencil"></i> Rename</a>
     </li>
     <li key="divider-1" class="divider"></li>

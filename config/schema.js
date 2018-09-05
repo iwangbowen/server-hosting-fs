@@ -9,7 +9,6 @@ var serverSchema = Joi.object().required().keys({
 module.exports = {
   server: serverSchema,
   logging: Joi.object(),
-  workingDirectory: Joi.string(),
   views: Joi.object().required().keys({
     isCached: Joi.boolean().required()
   })

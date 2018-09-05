@@ -14,18 +14,19 @@
   ],
   "main": "server.js",
   "bin": {
-    "noide": "bin/noide.js"
+    "noide": "server.js"
   },
   "scripts": {
     "start": "pm2 start config/pm2.json",
     "stop": "pm2 stop noide",
+    "pkg": "pkg package.json",
     "build:app:js": "browserify client/index.js -t [superviewify] -o server/public/js/index.js -d",
     "build:core:js": "browserify client/core.js -o server/public/js/core.js",
     "build:css": "node-sass client/index.scss --include-path node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss -o server/public/css",
     "build": "npm run build:core:js && npm run build:app:js && npm run build:css",
     "watch": "wisk ./bin/wisk.js",
-    "watch:server": "nodemon --config server-nodemon.json",
-    "watch:client": "nodemon --watch client --exec client.js \"npm run build\"",
+    "watch:server": "nodemon --config nodemon.json",
+    "watch:client": "nodemon --watch client --ext \"html scss js\" --exec \"npm run build\"",
     "copy:assets": "rm -rf server/public/fonts && cp -R node_modules/font-awesome/fonts server/public",
     "lint": "standard",
     "test": "npm run lint"
@@ -65,6 +66,11 @@
   "devDependencies": {
     "nodemon": "^1.18.3",
     "wisk": "1.0.0"
+  },
+  "pkg": {
+    "targets": ["node10-win-x64"],
+    "scripts": ["server/*.js", "server/routes/**/*.js"],
+    "assets": ["server/{public,views}/**/*"]
   },
   "repository": {
     "type": "git",

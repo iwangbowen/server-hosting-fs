@@ -96,17 +96,29 @@ function FileMenu (el) {
     }
   }
 
-  var model = {
+  function openWithBuilder() {
+    $('#fileeditor').hide();
+    $('#uitools').show();
+  }
+
+  function openWithEditor() {
+    $('#fileeditor').show();
+    $('#uitools').hide();
+  }
+
+  const model = {
     x: 0,
     y: 0,
     file: null,
-    rename: rename,
-    paste: paste,
-    mkfile: mkfile,
-    mkdir: mkdir,
-    remove: remove,
-    showPaste: showPaste,
-    setPasteBuffer: setPasteBuffer
+    rename,
+    paste,
+    mkfile,
+    mkdir,
+    remove,
+    showPaste,
+    setPasteBuffer,
+    openWithBuilder,
+    openWithEditor
   }
 
   function hide () {
