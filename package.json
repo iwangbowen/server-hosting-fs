@@ -54,7 +54,7 @@
     "minimist": "1.2.0",
     "ncp": "2.0.0",
     "nes": "3.0.0",
-    "node-sass": "3.4.2",
+    "node-sass": "4.9.3",
     "page": "1.6.4",
     "querystring": "0.2.0",
     "rimraf": "2.5.1",
