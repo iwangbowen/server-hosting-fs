@@ -20,11 +20,12 @@
     "start": "pm2 start config/pm2.json",
     "stop": "pm2 stop noide",
     "pkg": "pkg package.json",
+    "copy": "cpx client/**/*.html dist -C",
     "babelify": "babel client -d dist",
     "build:app:js": "browserify dist/index.js -t [superviewify] -o server/public/js/index.js -d",
     "build:core:js": "browserify dist/core.js -o server/public/js/core.js",
     "build:css": "node-sass client/index.scss --include-path node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss -o server/public/css",
-    "build": "cp client dist -r && npm run babelify && npm run build:core:js && npm run build:app:js && npm run build:css",
+    "build": "npm run copy && npm run babelify && npm run build:core:js && npm run build:app:js && npm run build:css",
     "watch": "wisk ./bin/wisk.js",
     "watch:server": "nodemon --config nodemon.json",
     "watch:client": "nodemon --watch client --ext \"html scss js\" --exec \"npm run build\"",
@@ -68,6 +69,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "cpx": "^1.5.0",
     "nodemon": "^1.18.3",
     "wisk": "1.0.0"
   },
