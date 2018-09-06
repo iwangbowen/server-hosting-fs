@@ -1,13 +1,13 @@
-var page = require('page')
-var qs = require('querystring')
-var fs = require('./fs')
-var client = require('./client')
-var util = require('./util')
-var splitter = require('./splitter')
-var editor = require('./editor')
-var linter = require('./standard')
-var noide = require('./noide')
-var watch = require('./watch')
+var page = require('page');
+var qs = require('querystring');
+var fs = require('./fs');
+var client = require('./client');
+var util = require('./util');
+var splitter = require('./splitter');
+var editor = require('./editor');
+var linter = require('./standard');
+var noide = require('./noide');
+var watch = require('./watch');
 
 var workspacesEl = document.getElementById('workspaces')
 

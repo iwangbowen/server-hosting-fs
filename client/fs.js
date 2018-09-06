@@ -70,11 +70,11 @@ function remove (path, callback) {
 }
 
 module.exports = {
-  mkdir: mkdir,
-  mkfile: mkfile,
-  copy: copy,
-  readFile: readFile,
-  writeFile: writeFile,
-  rename: rename,
-  remove: remove
-}
+  mkdir,
+  mkfile,
+  copy,
+  readFile,
+  writeFile,
+  rename,
+  remove
+};
