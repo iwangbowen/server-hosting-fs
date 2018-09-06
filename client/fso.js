@@ -1,17 +1,17 @@
 var extend = require('extend')
 
-function File (data) {
-  extend(this, data)
+function File(data) {
+  extend(this, data);
   if (this.isDirectory) {
-    this.expanded = false
+    this.expanded = false;
   }
 }
 Object.defineProperties(File.prototype, {
   isFile: {
     get: function () {
-      return !this.isDirectory
+      return !this.isDirectory;
     }
   }
 })
 
-module.exports = File
+module.exports = File;

@@ -1,37 +1,37 @@
-var page = require('page');
-var qs = require('querystring');
-var fs = require('./fs');
-var client = require('./client');
-var util = require('./util');
-var splitter = require('./splitter');
-var editor = require('./editor');
-var linter = require('./standard');
-var noide = require('./noide');
-var watch = require('./watch');
+const page = require('page');
+const qs = require('querystring');
+const fs = require('./fs');
+const client = require('./client');
+const util = require('./util');
+const splitter = require('./splitter');
+const editor = require('./editor');
+const linter = require('./standard');
+const noide = require('./noide');
+const watch = require('./watch');
 
-var workspacesEl = document.getElementById('workspaces')
+const workspacesEl = document.getElementById('workspaces');
 
 window.onbeforeunload = function () {
   if (noide.dirty.length) {
-    return 'Unsaved changes will be lost - are you sure you want to leave?'
+    return 'Unsaved changes will be lost - are you sure you want to leave?';
   }
 }
 
 client.connect(function (err) {
   if (err) {
-    return util.handleError(err)
+    return util.handleError(err);
   }
 
   client.request('/watched', function (err, payload) {
     if (err) {
-      return util.handleError(err)
+      return util.handleError(err);
     }
 
-    noide.load(payload)
+    noide.load(payload);
 
     // Save state on page unload
     window.onunload = function () {
-      noide.saveState()
+      noide.saveState();
     }
 
     // Build the tree pane
@@ -54,7 +54,7 @@ client.connect(function (err) {
     })
 
     /* Initialize the splitters */
-    function resizeEditor () {
+    function resizeEditor() {
       editor.resize()
       processesView.editor.resize()
     }
@@ -66,7 +66,7 @@ client.connect(function (err) {
     /* Initialize the standardjs linter */
     linter()
 
-    function setWorkspace (className) {
+    function setWorkspace(className) {
       workspacesEl.className = className || 'welcome'
     }
 
@@ -90,7 +90,7 @@ client.connect(function (err) {
 
       var session = noide.getSession(file)
 
-      function setSession () {
+      function setSession() {
         setWorkspace('editor')
 
         // Update state

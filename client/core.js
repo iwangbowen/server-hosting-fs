@@ -1,2 +1,2 @@
-window.jQuery = require('jquery')
-require('bootstrap-sass')
+window.jQuery = require('jquery');
+require('bootstrap-sass');

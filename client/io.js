@@ -27,5 +27,5 @@ function run (command, name, callback) {
 }
 
 module.exports = {
-  run: run
-}
+  run
+};
