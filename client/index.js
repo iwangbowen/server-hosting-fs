@@ -8,6 +8,7 @@ const editor = require('./editor');
 const linter = require('./standard');
 const noide = require('./noide');
 const watch = require('./watch');
+const { initMessageListener } = require('./message');
 
 const workspacesEl = document.getElementById('workspaces');
 
@@ -16,6 +17,8 @@ window.onbeforeunload = function () {
     return 'Unsaved changes will be lost - are you sure you want to leave?';
   }
 }
+
+initMessageListener();
 
 client.connect(function (err) {
   if (err) {

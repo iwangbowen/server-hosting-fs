@@ -6,6 +6,7 @@ var view = require('./view.html')
 var copied
 var $ = window.jQuery
 var path = require('path')
+const { sendMessage } = require('../builder');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -103,7 +104,8 @@ function FileMenu(el) {
     }
   }
 
-  function openWithBuilder() {
+  function openInBuilder() {
+    sendMessage('message sent to iframe');
     $('#fileeditor').hide();
     $('#uitools').show();
   }
@@ -111,6 +113,10 @@ function FileMenu(el) {
   function openWithEditor() {
     $('#fileeditor').show();
     $('#uitools').hide();
+  }
+
+  function quit() {
+    hide();
   }
 
   const model = {
@@ -124,9 +130,10 @@ function FileMenu(el) {
     remove,
     showPaste,
     setPasteBuffer,
-    openWithBuilder,
-    openWithEditor
-  }
+    openInBuilder,
+    openWithEditor,
+    quit
+  };
 
   function hide() {
     model.file = null
@@ -146,4 +153,4 @@ function FileMenu(el) {
 var fileMenuEl = document.getElementById('file-menu')
 var fileMenu = new FileMenu(fileMenuEl)
 
-module.exports = fileMenu
+module.exports = fileMenu;
