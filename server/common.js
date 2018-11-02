@@ -7,5 +7,6 @@ module.exports = {
   },
   getuid: function () {
     return ('' + Math.random()).replace(/\D/g, '')
-  }
+  },
+  isDevEnv: require('process').env.NODE_ENV === 'development'
 }

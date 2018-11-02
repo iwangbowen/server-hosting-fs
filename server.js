@@ -44,6 +44,11 @@ async function init() {
     const preResponse = function (request, reply) {
       var response = request.response
 
+      if (require('./server/common').isDevEnv) {
+        response.headers['Cache-Control'] = 'Cache-Control: no-cache, no-store, must-revalidate';
+        response.headers['Pragma'] = 'no-cache';
+        response.headers['Expires'] = 0;
+      }
       if (response.isBoom) {
         // An error was raised during
         // processing the request
