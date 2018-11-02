@@ -23,7 +23,7 @@
       <li each="process, process.pid in model.processes" class="{process === model.current ? 'dropup active' : 'dropup'}">
         <a onclick="{actions.setCurrent(process)}" class="dropdown-toggle" data-toggle="dropdown">
           <span class="{'circle ' + (!process.isAlive ? 'dead' : (process.isActive ? 'alive active' : 'alive'))}"></span>
-          {process.name || process.command}
+          <span>{process.name || process.command}</span>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
