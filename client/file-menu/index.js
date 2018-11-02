@@ -7,23 +7,30 @@ var copied
 var $ = window.jQuery
 var path = require('path')
 
-function FileMenu (el) {
+function FileMenu(el) {
   var $el = $(el)
-  $el.on('mouseleave', function () {
-    hide()
-  })
+  // $el.on('mouseleave', function () {
+  //   hide()
+  // })
+  // https://stackoverflow.com/questions/1403615/use-jquery-to-hide-a-div-when-the-user-clicks-outside-of-it
+  $(document).mouseup(e => {
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!$el.is(e.target) && $el.has(e.target).length === 0) {
+      hide();
+    }
+  });
 
-  function callback (err, payload) {
+  function callback(err, payload) {
     if (err) {
       return util.handleError(err)
     }
   }
 
-  function resetPasteBuffer () {
+  function resetPasteBuffer() {
     copied = null
   }
 
-  function setPasteBuffer (file, action) {
+  function setPasteBuffer(file, action) {
     hide()
     copied = {
       file: file,
@@ -31,7 +38,7 @@ function FileMenu (el) {
     }
   }
 
-  function showPaste (file) {
+  function showPaste(file) {
     if (copied) {
       var sourcePath = copied.file.relativePath.toLowerCase()
       var sourceDir = copied.file.relativeDir.toLowerCase()
@@ -52,13 +59,13 @@ function FileMenu (el) {
     return false
   }
 
-  function rename (file) {
+  function rename(file) {
     hide()
     resetPasteBuffer()
     fileEditor.rename(file)
   }
 
-  function paste (file) {
+  function paste(file) {
     hide()
     if (copied && copied.file) {
       var action = copied.action
@@ -75,19 +82,19 @@ function FileMenu (el) {
     }
   }
 
-  function mkfile (file) {
+  function mkfile(file) {
     hide()
     resetPasteBuffer()
     fileEditor.mkfile(file.isDirectory ? file : file.parent)
   }
 
-  function mkdir (file) {
+  function mkdir(file) {
     hide()
     resetPasteBuffer()
     fileEditor.mkdir(file.isDirectory ? file : file.parent)
   }
 
-  function remove (file) {
+  function remove(file) {
     var path = file.relativePath
     hide()
     resetPasteBuffer()
@@ -121,12 +128,12 @@ function FileMenu (el) {
     openWithEditor
   }
 
-  function hide () {
+  function hide() {
     model.file = null
     patch(el, view, model)
   }
 
-  function show (x, y, file) {
+  function show(x, y, file) {
     model.x = x
     model.y = y
     model.file = file
