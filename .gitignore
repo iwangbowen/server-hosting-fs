@@ -7,3 +7,5 @@ client-config.json
 server-config.json
 *.exe
 dist
+server/public/css
+server/public/js
