@@ -13,7 +13,7 @@ module.exports = {
     },
     cache: {
       privacy: 'private',
-      expiresIn: 60 * 1000 * 2880
+      expiresIn: 0
     }
   }
 }
