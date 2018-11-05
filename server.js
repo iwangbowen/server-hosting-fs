@@ -4,8 +4,10 @@ const sock = require('./server/file-system-watcher');
 const appName = require('./package.json').name;
 const fs = require('fs');
 const path = require('path');
+const opn = require('opn');
 
 async function init() {
+  const isDevEnv = require('./server/common').isDevEnv;
   config.server.port = await require("find-free-port")(config.server.port).then(([port]) => port);
   Glupe.compose(__dirname, config, function (err, server) {
     if (err) {
@@ -20,7 +22,7 @@ async function init() {
       favicon: '/public/favicon.ico'
     };
 
-    if (!require('./server/common').isDevEnv) {
+    if (!isDevEnv) {
       const filePath = path.join(process.cwd(), 'noide.config.json');
       console.log(`noide.config.json file path is ${filePath}`);
       if (fs.existsSync(filePath)) {
@@ -62,7 +64,7 @@ async function init() {
     const preResponse = function (request, reply) {
       var response = request.response
 
-      if (require('./server/common').isDevEnv) {
+      if (isDevEnv) {
         response.headers['Cache-Control'] = 'Cache-Control: no-cache, no-store, must-revalidate';
         response.headers['Pragma'] = 'no-cache';
         response.headers['Expires'] = 0;
@@ -112,6 +114,10 @@ async function init() {
         details.message = `Started ${details.name} on ${details.uri}`;
         server.log('info', details)
         console.info(details.message)
+
+        if (config.settings.autoOpenBrowser) {
+          opn(details.uri);
+        }
 
         sock(server)
         server.subscription('/io')

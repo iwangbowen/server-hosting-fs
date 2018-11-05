@@ -14,6 +14,7 @@
     "isCached": false
   },
   "settings": {
-    "builderUrl": "http://localhost:8003"
+    "builderUrl": "http://localhost:8003",
+    "autoOpenBrowser": false
   }
 }
