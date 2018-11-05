@@ -20,6 +20,7 @@
     "start": "pm2 start config/pm2.json",
     "stop": "pm2 stop noide",
     "pkg": "pkg package.json",
+    "zip": "bestzip noide.zip noide.exe noide.config.json",
     "copy": "cpx client/**/*.html dist -C",
     "babelify": "babel client -d dist",
     "build:app:js": "browserify dist/index.js -t [superviewify] -o server/public/js/index.js -d",
@@ -69,6 +70,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "bestzip": "^2.1.2",
     "cpx": "^1.5.0",
     "nodemon": "^1.18.3",
     "wisk": "1.0.0"
