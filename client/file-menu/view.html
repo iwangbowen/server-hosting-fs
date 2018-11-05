@@ -5,7 +5,7 @@
   <ul if="file" class="dropdown-menu" style="{ top: model.y, left: model.x }">
     <li key="header" class="dropdown-header">{file.name}</li>
     <li key="openInBuilder">
-      <a onclick="{model.openInBuilder()}"><i><i class="fa fa-eye"> Open In Builder</i></a>
+      <a onclick="{model.openInBuilder(file)}"><i><i class="fa fa-eye"> Open In Builder</i></a>
     </li>
     <!-- <li key="openWithEditor">
       <a onclick="{model.openWithEditor()}"><i><i class="fa fa-file-o"> Open With Editor</i></a>
@@ -17,15 +17,19 @@
     </li>
     <li key="copy"><a onclick="{model.setPasteBuffer(file, 'copy')}"><i class="fa fa-copy"></i> Copy</a>
     </li>
+    <li key="delete"><a onclick="{model.remove(file)}"><i class="fa fa-trash"></i> Delete</a>
+    </li>
     <li if="model.showPaste(file)" key="paste">
       <a onclick="{model.paste(file)}"><i class="fa fa-paste"></i> Paste</a>
     </li>
     <li key="divider-2" class="divider"></li>
     <li key="mkfile"><a onclick="{model.mkfile(file)}"><i class="fa fa-file"></i> Add new file</a>
     </li>
-    <li key="mkdir"><a onclick="{model.mkdir(file)}"><i class="fa fa-folder"></i> Add new folder</a>
+    <li key="mkcustomfile"><a onclick="{model.mkcustomfile(file)}"><i class="fa fa-file"></i> Add custom file</a>
     </li>
-    <li key="delete"><a onclick="{model.remove(file)}"><i class="fa fa-trash"></i> Delete</a>
+    <li key="mkgeneralfile"><a onclick="{model.mkgeneralfile(file)}"><i class="fa fa-file"></i> Add general file</a>
+    </li>
+    <li key="mkdir"><a onclick="{model.mkdir(file)}"><i class="fa fa-folder"></i> Add new folder</a>
     </li>
     <li key="divider-3" class="divider"></li>
     <li key="quit"><a onclick="{model.quit()}"><i class="fa fa-times"></i> Quit</a>

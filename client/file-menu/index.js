@@ -6,7 +6,8 @@ var view = require('./view.html')
 var copied
 var $ = window.jQuery
 var path = require('path')
-const { sendMessage } = require('../builder');
+const { sendMessage, Message } = require('../message');
+const noide = require('../noide');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -89,6 +90,19 @@ function FileMenu(el) {
     fileEditor.mkfile(file.isDirectory ? file : file.parent)
   }
 
+  function mkcustomfile(file) {
+    console.log(file)
+    hide();
+    resetPasteBuffer();
+    fileEditor.mkfile(file.isDirectory ? file : file.parent)
+  }
+
+  function mkgeneralfile(file) {
+    hide();
+    resetPasteBuffer();
+    fileEditor.mkfile(file.isDirectory ? file : file.parent)
+  }
+
   function mkdir(file) {
     hide()
     resetPasteBuffer()
@@ -104,8 +118,21 @@ function FileMenu(el) {
     }
   }
 
-  function openInBuilder() {
-    sendMessage('message sent to iframe');
+  function openInBuilder(file) {
+    hide();
+    noide.current = file;
+    var session = noide.getSession(file);
+    if (session) {
+      sendMessage(new Message('edit', '', session.getValue()));
+    } else {
+      fs.readFile(file.relativePath, function (err, payload) {
+        if (err) {
+          return util.handleError(err);
+        }
+        session = noide.addSession(file, payload.contents);
+        sendMessage(new Message('edit', '', session.getValue()));
+      })
+    }
     $('#fileeditor').hide();
     $('#uitools').show();
   }
@@ -132,7 +159,9 @@ function FileMenu(el) {
     setPasteBuffer,
     openInBuilder,
     openWithEditor,
-    quit
+    quit,
+    mkcustomfile,
+    mkgeneralfile
   };
 
   function hide() {

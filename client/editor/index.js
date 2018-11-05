@@ -14,7 +14,7 @@ editor.setOptions({
   fontSize: config.ace.fontSize
 })
 
-function save (file, session) {
+function save(file, session) {
   fs.writeFile(file.path, session.getValue(), function (err, payload) {
     if (err) {
       return util.handleError(err)
