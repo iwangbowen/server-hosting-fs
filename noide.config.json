@@ -1,5 +1,4 @@
 {
     "builderUrl": "http://10.108.7.58/editor.html",
-    "autoOpenBrowser": true,
-    "noCache": true
+    "autoOpenBrowser": true
 }
