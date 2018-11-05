@@ -8,11 +8,12 @@ const editor = require('./editor');
 const linter = require('./standard');
 const noide = require('./noide');
 const watch = require('./watch');
-const { initMessageListener } = require('./message');
+const { initMessageListener, setIgnoreMessage } = require('./message');
 
 const workspacesEl = document.getElementById('workspaces');
 
 function setWorkspace(className) {
+  setIgnoreMessage(className != 'builder');
   workspacesEl.className = className || 'welcome';
 }
 

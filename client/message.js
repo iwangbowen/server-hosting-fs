@@ -3,6 +3,15 @@ const noide = require('./noide');
 
 const iframeEl = document.getElementById('iframe');
 const $ = window.jQuery;
+let ignoreMessage = true;
+
+function isIgnoreMessage() {
+    return ignoreMessage;
+}
+
+function setIgnoreMessage(ignore) {
+    ignoreMessage = ignore;
+}
 
 function sendMessage(msg) {
     iframeEl.contentWindow.postMessage(msg, '*');
@@ -11,13 +20,15 @@ function sendMessage(msg) {
 function initMessageListener() {
     let lastMsg = null;
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        if (newMsg != lastMsg) {
-            const file = noide.current;
-            const session = noide.getSession(file)
-            session.setValue(newMsg);
-            editor.execCommand('save');
+        if (!isIgnoreMessage()) {
+            if (newMsg != lastMsg) {
+                const file = noide.current;
+                const session = noide.getSession(file)
+                session.setValue(newMsg);
+                editor.execCommand('save');
+            }
+            lastMsg = newMsg;
         }
-        lastMsg = newMsg;
     });
 }
 
@@ -32,5 +43,6 @@ class Message {
 module.exports = {
     sendMessage,
     initMessageListener,
-    Message
+    Message,
+    setIgnoreMessage
 };

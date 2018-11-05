@@ -13,8 +13,7 @@ function Recent (el) {
   }
 
   function render () {
-    console.log('Render recent')
-    patch(el, view, noide.recent, noide.current, onClickClose, isDirty)
+    patch(el, view, noide.recent, noide.current, onClickClose, isDirty);
   }
 
   noide.onAddRecent(render)
