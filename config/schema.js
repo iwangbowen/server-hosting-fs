@@ -11,5 +11,6 @@ module.exports = {
   logging: Joi.object(),
   views: Joi.object().required().keys({
     isCached: Joi.boolean().required()
-  })
-}
+  }),
+  settings: Joi.object()
+};

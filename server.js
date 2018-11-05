@@ -37,6 +37,7 @@ async function init() {
             context.meta[key] = meta[key]
           }
         }
+        context.settings = config.settings;
       }
       return reply.continue()
     }

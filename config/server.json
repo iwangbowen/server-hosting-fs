@@ -12,5 +12,8 @@
   },
   "views": {
     "isCached": false
+  },
+  "settings": {
+    "builderUrl": "http://localhost:8003"
   }
 }
