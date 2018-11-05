@@ -6,6 +6,7 @@ config/pm2.json
 client-config.json
 server-config.json
 *.exe
+*.zip
 dist
 server/public/css
 server/public/js
