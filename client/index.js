@@ -17,6 +17,14 @@ function setWorkspace(className) {
   workspacesEl.className = className || 'welcome';
 }
 
+function setWorkspaceInEditor() {
+  setWorkspace('editor');
+}
+
+function setWorkspaceInBuilder() {
+  setWorkspace('builder');
+}
+
 window.onbeforeunload = function () {
   if (noide.dirty.length) {
     return 'Unsaved changes will be lost - are you sure you want to leave?';
@@ -135,5 +143,7 @@ client.connect(function (err) {
 });
 
 module.exports = {
-  setWorkspace
+  setWorkspace,
+  setWorkspaceInBuilder,
+  setWorkspaceInEditor
 };

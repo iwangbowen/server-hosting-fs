@@ -1,14 +1,14 @@
-var patch = require('../patch')
-var fs = require('../fs')
-var util = require('../util')
-var fileEditor = require('../file-editor')
-var view = require('./view.html')
-var copied
-var $ = window.jQuery
-var path = require('path')
+var patch = require('../patch');
+var fs = require('../fs');
+var util = require('../util');
+var fileEditor = require('../file-editor');
+var view = require('./view.html');
+var copied;
+var $ = window.jQuery;
+var path = require('path');
 const { sendMessage, Message } = require('../message');
 const noide = require('../noide');
-const { setWorkspace } = require('../index');
+const { setWorkspaceInBuilder } = require('../index');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -91,17 +91,53 @@ function FileMenu(el) {
     fileEditor.mkfile(file.isDirectory ? file : file.parent)
   }
 
-  function mkcustomfile(file) {
-    console.log(file)
-    hide();
-    resetPasteBuffer();
-    fileEditor.mkfile(file.isDirectory ? file : file.parent)
+  function addCallback(template, relativePath) {
+    sendMessage(new Message('add', template));
+    const file = noide.getFile(relativePath);
+    noide.current = file;
+    let session = noide.getSession(file);
+    if (session) {
+      setWorkspaceInBuilder();
+    } else {
+      fs.readFile(file.relativePath, function (err, payload) {
+        if (err) {
+          return util.handleError(err);
+        }
+        session = noide.addSession(file, payload.contents);
+        setWorkspaceInBuilder();
+      });
+    }
   }
 
-  function mkgeneralfile(file) {
+  function mkblankcustom(file) {
     hide();
     resetPasteBuffer();
-    fileEditor.mkfile(file.isDirectory ? file : file.parent)
+    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, 'pds', addCallback);
+  }
+
+  function mkblankgeneral(file) {
+    hide();
+    resetPasteBuffer();
+    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, 'layout', addCallback);
+  }
+
+  function openInBuilder(file) {
+    hide();
+    noide.current = file;
+    let session = noide.getSession(file);
+    if (session) {
+      sendMessage(new Message('edit', '', session.getValue()));
+      setWorkspaceInBuilder();
+    } else {
+      fs.readFile(file.relativePath, function (err, payload) {
+        if (err) {
+          return util.handleError(err);
+        }
+        session = noide.addSession(file, payload.contents);
+        sendMessage(new Message('edit', '', session.getValue()));
+        setWorkspaceInBuilder();
+      })
+    }
   }
 
   function mkdir(file) {
@@ -117,29 +153,6 @@ function FileMenu(el) {
     if (window.confirm('Delete [' + path + ']')) {
       fs.remove(path, callback)
     }
-  }
-
-  function openInBuilder(file) {
-    hide();
-    noide.current = file;
-    var session = noide.getSession(file);
-    if (session) {
-      sendMessage(new Message('edit', '', session.getValue()));
-    } else {
-      fs.readFile(file.relativePath, function (err, payload) {
-        if (err) {
-          return util.handleError(err);
-        }
-        session = noide.addSession(file, payload.contents);
-        sendMessage(new Message('edit', '', session.getValue()));
-      })
-    }
-    setWorkspace('builder');
-  }
-
-  function openWithEditor() {
-    $('#fileeditor').show();
-    $('#uitools').hide();
   }
 
   function quit() {
@@ -158,10 +171,9 @@ function FileMenu(el) {
     showPaste,
     setPasteBuffer,
     openInBuilder,
-    openWithEditor,
     quit,
-    mkcustomfile,
-    mkgeneralfile
+    mkblankcustom,
+    mkblankgeneral
   };
 
   function hide() {

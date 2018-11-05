@@ -21,12 +21,10 @@ function initMessageListener() {
     let lastMsg = null;
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
         if (!isIgnoreMessage()) {
-            if (newMsg != lastMsg) {
-                const file = noide.current;
-                const session = noide.getSession(file)
-                session.setValue(newMsg);
-                editor.execCommand('save');
-            }
+            const file = noide.current;
+            const session = noide.getSession(file);
+            session.setValue(newMsg);
+            editor.execCommand('save');
             lastMsg = newMsg;
         }
     });
