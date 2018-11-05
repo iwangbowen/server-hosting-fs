@@ -2,6 +2,8 @@ const Glupe = require('glupe');
 const config = require('./config');
 const sock = require('./server/file-system-watcher');
 const appName = require('./package.json').name;
+const fs = require('fs');
+const path = require('path');
 
 async function init() {
   config.server.port = await require("find-free-port")(config.server.port).then(([port]) => port);
@@ -16,6 +18,21 @@ async function init() {
       keywords: 'code,nodejs,editor,browser',
       author: 'davidjamesstone@github.com',
       favicon: '/public/favicon.ico'
+    };
+
+    if (!require('./server/common').isDevEnv) {
+      const filePath = path.join(process.cwd(), 'noide.config.json');
+      console.log(`noide.config.json file path is ${filePath}`);
+      if (fs.existsSync(filePath)) {
+        const data = fs.readFileSync(path.join(process.cwd(), 'noide.config.json'));
+        const settings = JSON.parse(data);
+        config.settings = {
+          ...config.settings,
+          ...settings
+        };
+      } else {
+        console.error('Cannot find config file, use default settings instead');
+      }
     }
 
     const onPostHandler = function (request, reply) {
