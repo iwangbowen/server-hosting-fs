@@ -4,9 +4,11 @@
   </script>
   <ul if="file" class="dropdown-menu" style="{ top: model.y, left: model.x }">
     <li key="header" class="dropdown-header">{file.name}</li>
-    <li key="openInBuilder">
-      <a onclick="{model.openInBuilder(file)}"><i><i class="fa fa-eye"> Open In Builder</i></a>
-    </li>
+    <if condition="file.ext == '.html'">
+      <li key="openInBuilder">
+        <a onclick="{model.openInBuilder(file)}"><i class="fa fa-eye"> Open In Builder</i></a>
+      </li>
+    </if>
     <!-- <li key="openWithEditor">
       <a onclick="{model.openWithEditor()}"><i><i class="fa fa-file-o"> Open With Editor</i></a>
     </li> -->
