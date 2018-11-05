@@ -8,6 +8,7 @@ var $ = window.jQuery
 var path = require('path')
 const { sendMessage, Message } = require('../message');
 const noide = require('../noide');
+const { setWorkspace } = require('../index');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -133,8 +134,7 @@ function FileMenu(el) {
         sendMessage(new Message('edit', '', session.getValue()));
       })
     }
-    $('#fileeditor').hide();
-    $('#uitools').show();
+    setWorkspace('builder');
   }
 
   function openWithEditor() {

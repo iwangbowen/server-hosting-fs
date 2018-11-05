@@ -117,11 +117,12 @@ aside {
 }
 
 #workspaces.welcome .workspace.welcome,
-#workspaces.editor .workspace.editor {
+#workspaces.editor .workspace.editor,
+#workspaces.builder .workspace.builder {
   display: block;
 }
 
-#workspaces.editor #editor {
+#workspaces.editor #editor, #workspaces.builder #builder {
   top: 0;
   bottom: 0;
   left: 0;

@@ -12,6 +12,10 @@ const { initMessageListener } = require('./message');
 
 const workspacesEl = document.getElementById('workspaces');
 
+function setWorkspace(className) {
+  workspacesEl.className = className || 'welcome';
+}
+
 window.onbeforeunload = function () {
   if (noide.dirty.length) {
     return 'Unsaved changes will be lost - are you sure you want to leave?';
@@ -68,10 +72,6 @@ client.connect(function (err) {
 
     /* Initialize the standardjs linter */
     linter()
-
-    function setWorkspace(className) {
-      workspacesEl.className = className || 'welcome'
-    }
 
     page('*', function (ctx, next) {
       // Update current file state
@@ -131,4 +131,8 @@ client.connect(function (err) {
       hashbang: true
     })
   })
-})
+});
+
+module.exports = {
+  setWorkspace
+};

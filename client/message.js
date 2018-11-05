@@ -1,7 +1,7 @@
 const editor = require('./editor');
 const noide = require('./noide');
 
-const iframeEl = document.getElementById('builder');
+const iframeEl = document.getElementById('iframe');
 const $ = window.jQuery;
 
 function sendMessage(msg) {
@@ -10,8 +10,7 @@ function sendMessage(msg) {
 
 function initMessageListener() {
     let lastMsg = null;
-    $(window).on('message', ({ originalEvent: { data } }) => {
-        const newMsg = data;
+    $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
         if (newMsg != lastMsg) {
             const file = noide.current;
             const session = noide.getSession(file)
