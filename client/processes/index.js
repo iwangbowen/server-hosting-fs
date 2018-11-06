@@ -177,7 +177,6 @@ function Processes (el) {
       pkg = JSON.parse(payload.contents)
     } catch (e) {}
 
-    console.log(pkg)
     if (pkg.scripts) {
       var tasks = []
       for (var script in pkg.scripts) {
