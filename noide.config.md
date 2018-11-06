@@ -12,4 +12,11 @@
 
 说明：启动程序后，是否自动打开默认浏览器，默认值为true。
 
+## browser
+
+类型： `string`
+
+说明：自动启动时打开的浏览器，去掉browser键值对或填写default，
+打开系统默认浏览器。可选值：default、chrome、microsoft-edge、iexplore或firefox。
+
 ## 后期可能添加更多配置参数。

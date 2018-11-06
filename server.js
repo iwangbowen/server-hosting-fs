@@ -110,7 +110,20 @@ async function init() {
         console.info(details.message)
 
         if (config.settings.autoOpenBrowser) {
-          opn(details.uri);
+          // https://github.com/sindresorhus/opn/issues/85
+          if (config.settings.browser && config.settings.browser != 'default') {
+            if (config.settings.browser == 'microsoft-edge') {
+              opn(details.uri, {
+                app: `${config.settings.browser}:${details.uri}`
+              });
+            } else {
+              opn(details.uri, {
+                app: config.settings.browser
+              });
+            }
+          } else {
+            opn(details.uri);
+          }
         }
 
         sock(server)
