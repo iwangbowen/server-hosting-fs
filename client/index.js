@@ -5,7 +5,6 @@ const client = require('./client');
 const util = require('./util');
 const splitter = require('./splitter');
 const editor = require('./editor');
-const linter = require('./standard');
 const noide = require('./noide');
 const watch = require('./watch');
 const { initMessageListener, setIgnoreMessage } = require('./message');
@@ -78,9 +77,6 @@ client.connect(function (err) {
     splitter(document.getElementById('sidebar-workspaces'), false, resizeEditor)
     splitter(document.getElementById('workspaces-info'), true, resizeEditor)
     splitter(document.getElementById('main-footer'), true, resizeEditor)
-
-    /* Initialize the standardjs linter */
-    linter()
 
     page('*', function (ctx, next) {
       // Update current file state
