@@ -15,6 +15,7 @@
   },
   "settings": {
     "builderUrl": "http://localhost:8003",
-    "autoOpenBrowser": false
+    "autoOpenBrowser": false,
+    "browser": "microsoft-edge"
   }
 }

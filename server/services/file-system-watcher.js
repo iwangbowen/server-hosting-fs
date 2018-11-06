@@ -20,19 +20,20 @@ var watcher = chokidar.watch(root, {
         // Otherwise ignore node_modules and bower_components and also ignore
         // any dir starting with a '.' e.g. '.git'
         return (fso.name === 'node_modules' && root === fso.dir) ||
-        fso.name === 'bower_components' || /[\/\\]\./.test(path)
+          fso.name === 'bower_components' || /[\/\\]\./.test(path)
       } else {
         return fso.name === '.DS_Store'
+          || fso.name === 'noide.exe'
+          || fso.name.includes('noide.config');
       }
     }
-
-    return false
+    return false;
   }
 })
 
 module.exports = {
   watcher: watcher,
-  get watched () {
+  get watched() {
     var items = []
     var watched = watcher.getWatched()
 
