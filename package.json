@@ -20,7 +20,7 @@
     "start": "pm2 start config/pm2.json",
     "stop": "pm2 stop noide",
     "pkg": "pkg package.json",
-    "zip": "bestzip noide.zip noide.exe noide.config.*",
+    "zip": "bestzip noide.zip noide.exe noide.config.* *.bat RunHide.vbs",
     "copy": "cpx client/**/*.html dist -C",
     "babelify": "babel client -d dist",
     "build:app:js": "browserify dist/index.js -t [superviewify] -o server/public/js/index.js -d",

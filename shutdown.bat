@@ -1,0 +1,1 @@
+taskkill /IM noide.exe /F
