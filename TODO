@@ -1,0 +1,2 @@
+Todo:
+  ? Optimize client/file-editor/index code using browser native Promise API or libraries
