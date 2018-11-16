@@ -18,14 +18,14 @@ function sendMessage(msg) {
 }
 
 function initMessageListener() {
-    let lastMsg = null;
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
         if (!isIgnoreMessage()) {
             const file = noide.current;
             const session = noide.getSession(file);
-            session.setValue(newMsg);
-            editor.execCommand('save');
-            lastMsg = newMsg;
+            if (session) {
+                session.setValue(newMsg);
+                editor.execCommand('save');
+            }
         }
     });
 }
