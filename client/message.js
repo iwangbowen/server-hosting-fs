@@ -23,8 +23,10 @@ function initMessageListener() {
             const file = noide.current;
             const session = noide.getSession(file);
             if (session) {
-                session.setValue(newMsg);
-                editor.execCommand('save');
+                if (session.getValue() !== newMsg) {
+                    session.setValue(newMsg);
+                    editor.execCommand('save');
+                }
             }
         }
     });
