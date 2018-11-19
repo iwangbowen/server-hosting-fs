@@ -24,7 +24,7 @@ function initMessageListener() {
             const session = noide.getSession(file);
             if (session) {
                 if (session.getValue() !== newMsg) {
-                    session.setValue(newMsg);
+                    session.setValue(newMsg, true);
                     editor.execCommand('save');
                 }
             }
@@ -44,5 +44,6 @@ module.exports = {
     sendMessage,
     initMessageListener,
     Message,
-    setIgnoreMessage
+    setIgnoreMessage,
+    isIgnoreMessage
 };

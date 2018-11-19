@@ -5,6 +5,7 @@ var util = require('../util')
 var config = require('../../config/client')
 var editor = window.ace.edit('editor')
 var $shortcuts = window.jQuery('#keyboard-shortcuts').modal({ show: false })
+const { setSavedInEditor } = require('../global');
 
 // Set editor options
 editor.setOptions({
@@ -15,7 +16,9 @@ editor.setOptions({
 })
 
 function save(file, session) {
+  setSavedInEditor(true);
   fs.writeFile(file.path, session.getValue(), function (err, payload) {
+    setSavedInEditor(false);
     if (err) {
       return util.handleError(err)
     }
