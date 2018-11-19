@@ -2,9 +2,10 @@ var fs = require('./fs')
 var client = require('./client')
 var util = require('./util')
 var noide = require('./noide')
+const { isIgnoreMessage, sendMessage, Message } = require('./message');
 
-function watch () {
-  function handleError (err) {
+function watch() {
+  function handleError(err) {
     if (err) {
       return util.handleError(err)
     }
@@ -25,6 +26,9 @@ function watch () {
             }
             file.stat = payload.stat
             session.setValue(payload.contents, true)
+            if (!isIgnoreMessage()) {
+              sendMessage(new Message('edit', '', session.getValue()));
+            }
           })
         }
       }
