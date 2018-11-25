@@ -23,15 +23,10 @@ function initMessageListener() {
             const file = noide.current;
             const session = noide.getSession(file);
             if (session) {
-<<<<<<< HEAD
                 if (session.getValue() !== newMsg) {
                     session.setValue(newMsg, true);
                     editor.execCommand('save');
                 }
-=======
-                session.setValue(newMsg);
-                editor.execCommand('save');
->>>>>>> parent of 97ebea7... Save to file after change happened
             }
         }
     });
