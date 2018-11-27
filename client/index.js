@@ -53,7 +53,7 @@ client.connect(function (err) {
     require('./tree')
 
     // Build the recent list pane
-    require('./recent')
+    // require('./recent')
 
     // Build the procsses pane
     var processesView = require('./processes')
@@ -75,7 +75,7 @@ client.connect(function (err) {
     }
 
     splitter(document.getElementById('sidebar-workspaces'), false, resizeEditor)
-    splitter(document.getElementById('workspaces-info'), true, resizeEditor)
+    // splitter(document.getElementById('workspaces-info'), true, resizeEditor)
     splitter(document.getElementById('main-footer'), true, resizeEditor)
 
     page('*', function (ctx, next) {
