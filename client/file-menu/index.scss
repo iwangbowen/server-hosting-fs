@@ -3,8 +3,17 @@
   ul.dropdown-menu {
     display: block;
     font-size: small;
+    background-color: #f8f9fa;
     li a {
+      color: #302e2e;
       cursor: pointer;
+    }
+    li a:hover {
+      color: #ffffff;
+      background-color: #007bff;
+    }
+    li.divider {
+      background-color: #000000;
     }
   }
 }

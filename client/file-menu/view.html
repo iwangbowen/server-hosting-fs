@@ -3,7 +3,7 @@
     var file = model.file
   </script>
   <ul if="file" class="dropdown-menu" style="{ top: model.y, left: model.x }">
-    <li key="header" class="dropdown-header">{file.name}</li>
+    <!-- <li key="header" class="dropdown-header">{file.name}</li> -->
     <if condition="file.ext == '.html'">
       <li key="openInBuilder">
         <a onclick="{model.openInBuilder(file)}"><i class="fa fa-eye"> Open In Builder</i></a>

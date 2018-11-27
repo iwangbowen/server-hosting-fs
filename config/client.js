@@ -5,7 +5,7 @@ var config = {
   ace: {
     tabSize: 2,
     fontSize: 20,
-    theme: 'monokai',
+    theme: 'eclipse',
     useSoftTabs: true
   }
 }
