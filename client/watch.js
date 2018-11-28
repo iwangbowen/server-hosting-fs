@@ -3,7 +3,6 @@ var client = require('./client')
 var util = require('./util')
 var noide = require('./noide')
 const { isIgnoreMessage, sendMessage, Message } = require('./message');
-const { getSavedInEditor } = require('./global');
 
 function watch() {
   function handleError(err) {
@@ -18,25 +17,22 @@ function watch() {
   // do not match the state of the file
   client.subscribe('/fs/change', function (payload) {
     noide.sessions.forEach(function (session) {
-      var file = session.file
+      const file = session.file;
       if (payload.path === file.path) {
-        const interval = setInterval(() => {
-          if (!getSavedInEditor()) {
-            clearInterval(interval);
-            if (payload.stat.mtime !== file.stat.mtime) {
-              fs.readFile(file.path, function (err, payload) {
-                if (err) {
-                  return util.handleError(err)
-                }
-                file.stat = payload.stat
-                session.setValue(payload.contents, true)
-                if (!isIgnoreMessage()) {
-                  sendMessage(new Message('edit', '', session.getValue()));
-                }
-              })
+        if (payload.stat.mtime !== file.stat.mtime) {
+          fs.readFile(file.path, function (err, payload) {
+            if (err) {
+              return util.handleError(err);
             }
-          }
-        }, 500);
+            file.stat = payload.stat;
+            if (session.getValue() !== payload.contents) {
+              session.setValue(payload.contents, true)
+              if (!isIgnoreMessage()) {
+                sendMessage(new Message('edit', '', session.getValue()));
+              }
+            }
+          })
+        }
       }
     })
   }, handleError)
