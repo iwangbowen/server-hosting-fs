@@ -2,6 +2,7 @@ var chokidar = require('chokidar')
 var p = require('path')
 var FileSystemObject = require('../file-system-object')
 var root = require('../../config/server.json').workingDirectory || process.cwd();
+const { ignoredDirs = [], ignoredFiles = [] } = require('../../config').settings;
 
 var watcher = chokidar.watch(root, {
   // atomic: true,
@@ -19,7 +20,7 @@ var watcher = chokidar.watch(root, {
         // Otherwise ignore node_modules and bower_components and also ignore
         // any dir starting with a '.' e.g. '.git'
         return (fso.name === 'node_modules' && root === fso.dir) ||
-          fso.name === 'bower_components' || /[\/\\]\./.test(path);
+          fso.name === 'bower_components' || ignoredDirs.includes(fso.name) || /[\/\\]\./.test(path);
       } else {
         return fso.name === '.DS_Store'
           || fso.name === 'noide.exe'
@@ -27,7 +28,8 @@ var watcher = chokidar.watch(root, {
           || fso.name.includes('noide.config')
           || fso.name === 'startup.bat'
           || fso.name === 'shutdown.bat'
-          || fso.name === 'RunHide.vbs';
+          || fso.name === 'RunHide.vbs'
+          || ignoredFiles.includes(fso.name)
       }
     }
     return false;

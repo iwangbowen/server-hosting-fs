@@ -16,6 +16,8 @@
   "settings": {
     "builderUrl": "http://localhost:8003",
     "autoOpenBrowser": false,
-    "browser": "default"
+    "browser": "default",
+    "ignoredDirs": [],
+    "ignoredFiles": []
   }
 }

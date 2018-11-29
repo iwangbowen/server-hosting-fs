@@ -26,4 +26,16 @@
 说明：自动启动时打开的浏览器，去掉browser键值对或填写default，
 打开系统默认浏览器。可选值：default、chrome、microsoft-edge、iexplore或firefox。
 
+### ignoredDirs
+
+类型：`string[]`
+
+说明：程序文件树不显示和不监控变化的文件夹。例如：["node_modules", "libs"]。
+
+### ignoredFiles
+
+类型：`string[]`
+
+说明：程序文件树不显示和不监控变化的文件。例如：[".project", ".gitignore", "config.ini"]。
+
 ### 后期可能添加更多配置参数。

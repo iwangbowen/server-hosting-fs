@@ -1,13 +1,28 @@
-const Glupe = require('glupe');
+const isDevEnv = require('./server/common').isDevEnv;
+const path = require('path');
+const fs = require('fs');
 const config = require('./config');
+if (!isDevEnv) {
+  const filePath = path.join(process.cwd(), 'noide.config.json');
+  console.log(`noide.config.json file path is ${filePath}`);
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(path.join(process.cwd(), 'noide.config.json'));
+    const settings = JSON.parse(data);
+    config.settings = {
+      ...config.settings,
+      ...settings
+    };
+  } else {
+    console.error('Cannot find config file, use default settings instead');
+  }
+}
+
+const Glupe = require('glupe');
 const sock = require('./server/file-system-watcher');
 const appName = require('./package.json').name;
-const fs = require('fs');
-const path = require('path');
 const opn = require('opn');
 
 async function init() {
-  const isDevEnv = require('./server/common').isDevEnv;
   config.server.port = await require("find-free-port")(config.server.port).then(([port]) => port);
   Glupe.compose(__dirname, config, function (err, server) {
     if (err) {
@@ -22,28 +37,12 @@ async function init() {
       favicon: '/public/favicon.ico'
     };
 
-    if (!isDevEnv) {
-      const filePath = path.join(process.cwd(), 'noide.config.json');
-      console.log(`noide.config.json file path is ${filePath}`);
-      if (fs.existsSync(filePath)) {
-        const data = fs.readFileSync(path.join(process.cwd(), 'noide.config.json'));
-        const settings = JSON.parse(data);
-        config.settings = {
-          ...config.settings,
-          ...settings
-        };
-      } else {
-        console.error('Cannot find config file, use default settings instead');
-      }
-    }
-
     const onPostHandler = function (request, reply) {
       const response = request.response
       if (response.variety === 'view') {
         if (!response.source.context) {
           response.source.context = {}
         }
-
         /*
          * Apply page meta data
          * to the view context data
