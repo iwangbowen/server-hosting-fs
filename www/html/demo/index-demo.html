@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="../../css/minireset.min.css" rel="stylesheet">
+    <link href="../../js/gridster/jquery.gridster.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../../js/plugins/layer/skin/moon/style.css">
+    <link rel="stylesheet" href="../../css/page_common/template_base.css" type="text/css">
+    <link rel="stylesheet" href="../../css/page_common/template_extend.css" type="text/css">
+    <link href="../../../../css/grid.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../js/plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min-4.1.3.css" type="text/css">
+    <style id="gridster-stylesheet" type="text/css">
+        [data-col="1"] {
+            left: 5px;
+        }
+
+        [data-col="2"] {
+            left: 108px;
+        }
+
+        [data-col="3"] {
+            left: 211px;
+        }
+
+        [data-col="4"] {
+            left: 314px;
+        }
+
+        [data-col="5"] {
+            left: 417px;
+        }
+
+        [data-col="6"] {
+            left: 520px;
+        }
+
+        [data-col="7"] {
+            left: 623px;
+        }
+
+        [data-col="8"] {
+            left: 726px;
+        }
+
+        [data-col="9"] {
+            left: 829px;
+        }
+
+        [data-col="10"] {
+            left: 932px;
+        }
+
+        [data-col="11"] {
+            left: 1035px;
+        }
+
+        [data-col="12"] {
+            left: 1138px;
+        }
+
+        [data-col="13"] {
+            left: 1241px;
+        }
+
+        [data-row="1"] {
+            top: 5px;
+        }
+
+        [data-row="2"] {
+            top: 60px;
+        }
+
+        [data-row="3"] {
+            top: 115px;
+        }
+
+        [data-row="4"] {
+            top: 170px;
+        }
+
+        [data-row="5"] {
+            top: 225px;
+        }
+
+        [data-row="6"] {
+            top: 280px;
+        }
+
+        [data-row="7"] {
+            top: 335px;
+        }
+
+        [data-row="8"] {
+            top: 390px;
+        }
+
+        [data-row="9"] {
+            top: 445px;
+        }
+
+        [data-row="10"] {
+            top: 500px;
+        }
+
+        [data-row="11"] {
+            top: 555px;
+        }
+
+        [data-row="12"] {
+            top: 610px;
+        }
+
+        [data-row="13"] {
+            top: 665px;
+        }
+
+        [data-row="14"] {
+            top: 720px;
+        }
+
+        [data-row="15"] {
+            top: 775px;
+        }
+
+        [data-row="16"] {
+            top: 830px;
+        }
+
+        [data-row="17"] {
+            top: 885px;
+        }
+
+        [data-row="18"] {
+            top: 940px;
+        }
+
+        [data-row="19"] {
+            top: 995px;
+        }
+
+        [data-row="20"] {
+            top: 1050px;
+        }
+
+        [data-row="21"] {
+            top: 1105px;
+        }
+
+        [data-row="22"] {
+            top: 1160px;
+        }
+
+        [data-row="23"] {
+            top: 1215px;
+        }
+
+        [data-row="24"] {
+            top: 1270px;
+        }
+
+        [data-row="25"] {
+            top: 1325px;
+        }
+
+        [data-row="26"] {
+            top: 1380px;
+        }
+
+        [data-row="27"] {
+            top: 1435px;
+        }
+
+        [data-row="28"] {
+            top: 1490px;
+        }
+
+        [data-row="29"] {
+            top: 1545px;
+        }
+
+        [data-row="30"] {
+            top: 1600px;
+        }
+
+        [data-row="31"] {
+            top: 1655px;
+        }
+
+        [data-row="32"] {
+            top: 1710px;
+        }
+
+        [data-row="33"] {
+            top: 1765px;
+        }
+
+        [data-row="34"] {
+            top: 1820px;
+        }
+
+        [data-row="35"] {
+            top: 1875px;
+        }
+
+        [data-row="36"] {
+            top: 1930px;
+        }
+
+        [data-row="37"] {
+            top: 1985px;
+        }
+
+        [data-row="38"] {
+            top: 2040px;
+        }
+
+        [data-row="39"] {
+            top: 2095px;
+        }
+
+        [data-row="40"] {
+            top: 2150px;
+        }
+
+        [data-row="41"] {
+            top: 2205px;
+        }
+
+        [data-row="42"] {
+            top: 2260px;
+        }
+
+        [data-row="43"] {
+            top: 2315px;
+        }
+
+        [data-row="44"] {
+            top: 2370px;
+        }
+
+        [data-row="45"] {
+            top: 2425px;
+        }
+
+        [data-row="46"] {
+            top: 2480px;
+        }
+
+        [data-row="47"] {
+            top: 2535px;
+        }
+
+        [data-row="48"] {
+            top: 2590px;
+        }
+
+        [data-row="49"] {
+            top: 2645px;
+        }
+
+        [data-row="50"] {
+            top: 2700px;
+        }
+
+        [data-row="51"] {
+            top: 2755px;
+        }
+
+        [data-row="52"] {
+            top: 2810px;
+        }
+
+        [data-row="53"] {
+            top: 2865px;
+        }
+
+        [data-row="54"] {
+            top: 2920px;
+        }
+
+        [data-row="55"] {
+            top: 2975px;
+        }
+
+        [data-row="56"] {
+            top: 3030px;
+        }
+
+        [data-row="57"] {
+            top: 3085px;
+        }
+
+        [data-row="58"] {
+            top: 3140px;
+        }
+
+        [data-row="59"] {
+            top: 3195px;
+        }
+
+        [data-row="60"] {
+            top: 3250px;
+        }
+
+        [data-row="61"] {
+            top: 3305px;
+        }
+
+        [data-sizey="1"] {
+            height: 50px;
+        }
+
+        [data-sizey="2"] {
+            height: 105px;
+        }
+
+        [data-sizey="3"] {
+            height: 160px;
+        }
+
+        [data-sizey="4"] {
+            height: 215px;
+        }
+
+        [data-sizey="5"] {
+            height: 270px;
+        }
+
+        [data-sizey="6"] {
+            height: 325px;
+        }
+
+        [data-sizey="7"] {
+            height: 380px;
+        }
+
+        [data-sizey="8"] {
+            height: 435px;
+        }
+
+        [data-sizey="9"] {
+            height: 490px;
+        }
+
+        [data-sizey="10"] {
+            height: 545px;
+        }
+
+        [data-sizey="11"] {
+            height: 600px;
+        }
+
+        [data-sizey="12"] {
+            height: 655px;
+        }
+
+        [data-sizey="13"] {
+            height: 710px;
+        }
+
+        [data-sizey="14"] {
+            height: 765px;
+        }
+
+        [data-sizey="15"] {
+            height: 820px;
+        }
+
+        [data-sizey="16"] {
+            height: 875px;
+        }
+
+        [data-sizey="17"] {
+            height: 930px;
+        }
+
+        [data-sizey="18"] {
+            height: 985px;
+        }
+
+        [data-sizey="19"] {
+            height: 1040px;
+        }
+
+        [data-sizey="20"] {
+            height: 1095px;
+        }
+
+        [data-sizey="21"] {
+            height: 1150px;
+        }
+
+        [data-sizey="22"] {
+            height: 1205px;
+        }
+
+        [data-sizey="23"] {
+            height: 1260px;
+        }
+
+        [data-sizey="24"] {
+            height: 1315px;
+        }
+
+        [data-sizey="25"] {
+            height: 1370px;
+        }
+
+        [data-sizey="26"] {
+            height: 1425px;
+        }
+
+        [data-sizey="27"] {
+            height: 1480px;
+        }
+
+        [data-sizey="28"] {
+            height: 1535px;
+        }
+
+        [data-sizey="29"] {
+            height: 1590px;
+        }
+
+        [data-sizey="30"] {
+            height: 1645px;
+        }
+
+        [data-sizey="31"] {
+            height: 1700px;
+        }
+
+        [data-sizey="32"] {
+            height: 1755px;
+        }
+
+        [data-sizey="33"] {
+            height: 1810px;
+        }
+
+        [data-sizey="34"] {
+            height: 1865px;
+        }
+
+        [data-sizey="35"] {
+            height: 1920px;
+        }
+
+        [data-sizey="36"] {
+            height: 1975px;
+        }
+
+        [data-sizey="37"] {
+            height: 2030px;
+        }
+
+        [data-sizey="38"] {
+            height: 2085px;
+        }
+
+        [data-sizey="39"] {
+            height: 2140px;
+        }
+
+        [data-sizey="40"] {
+            height: 2195px;
+        }
+
+        [data-sizey="41"] {
+            height: 2250px;
+        }
+
+        [data-sizey="42"] {
+            height: 2305px;
+        }
+
+        [data-sizey="43"] {
+            height: 2360px;
+        }
+
+        [data-sizey="44"] {
+            height: 2415px;
+        }
+
+        [data-sizey="45"] {
+            height: 2470px;
+        }
+
+        [data-sizey="46"] {
+            height: 2525px;
+        }
+
+        [data-sizey="47"] {
+            height: 2580px;
+        }
+
+        [data-sizey="48"] {
+            height: 2635px;
+        }
+
+        [data-sizey="49"] {
+            height: 2690px;
+        }
+
+        [data-sizey="50"] {
+            height: 2745px;
+        }
+
+        [data-sizey="51"] {
+            height: 2800px;
+        }
+
+        [data-sizey="52"] {
+            height: 2855px;
+        }
+
+        [data-sizey="53"] {
+            height: 2910px;
+        }
+
+        [data-sizey="54"] {
+            height: 2965px;
+        }
+
+        [data-sizey="55"] {
+            height: 3020px;
+        }
+
+        [data-sizey="56"] {
+            height: 3075px;
+        }
+
+        [data-sizey="57"] {
+            height: 3130px;
+        }
+
+        [data-sizey="58"] {
+            height: 3185px;
+        }
+
+        [data-sizey="59"] {
+            height: 3240px;
+        }
+
+        [data-sizey="60"] {
+            height: 3295px;
+        }
+
+        [data-sizex="1"] {
+            width: 98px;
+        }
+
+        [data-sizex="2"] {
+            width: 201px;
+        }
+
+        [data-sizex="3"] {
+            width: 304px;
+        }
+
+        [data-sizex="4"] {
+            width: 407px;
+        }
+
+        [data-sizex="5"] {
+            width: 510px;
+        }
+
+        [data-sizex="6"] {
+            width: 613px;
+        }
+
+        [data-sizex="7"] {
+            width: 716px;
+        }
+
+        [data-sizex="8"] {
+            width: 819px;
+        }
+
+        [data-sizex="9"] {
+            width: 922px;
+        }
+
+        [data-sizex="10"] {
+            width: 1025px;
+        }
+
+        [data-sizex="11"] {
+            width: 1128px;
+        }
+
+        [data-sizex="12"] {
+            width: 1231px;
+        }
+    </style>
+</head>
+
+<body class="ready" style="cursor: auto;">
+    <div class="gridster" style="height: 610px; min-width: 100%; max-width: 100%; position: relative;">
+        <div data-row="1" data-col="1" data-sizex="12" data-sizey="4" class="gs-w ui-droppable" style="margin-top: auto; margin-bottom: auto; position: absolute; min-height: auto;">
+            <form class="configurable-component ui-sortable ui-droppable" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-2">Label</label>
+                    <div class="col-sm-10">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-2">Label1</label>
+                    <div class="col-sm-10">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <button data-component-id="html/button@common" type="button" class="btn cloneable-component btn-primary ui-sortable-handle"
+                    style="z-index: 15;" data-url="data" data-enable-button-click-popup="false" data-button-key="_cc">Search</button>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                    style="z-index: 15;" data-button-key="_2j" data-enable-button-click-popup="false">Search</button>
+            </form>
+        </div>
+        <div data-row="5" data-col="1" data-sizex="12" data-sizey="6" class="gs-w ui-droppable" style="margin-top: auto; margin-bottom: auto; position: absolute; min-height: auto;">
+            <div data-component-id="html/commontable@common" data-enable-row-click="false" style="width: 100%; height: 100%; z-index: 15; left: 0px; top: 0px;"
+                class="resize-drag draggable ag-theme-blue" data-table-id="_5a" id="table_5a" data-enable-cell-click="true"
+                data-cell-click-url="data" data-response-data-key="" data-ag-grid-transpose-key="name"></div>
+        </div>
+        <div data-col="1" data-row="11" data-sizex="12" data-sizey="1" class="gs-w ui-sortable ui-droppable" style="display: block; margin-top: auto; margin-bottom: auto; min-height: auto;">
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component"
+                style="z-index: 15;" data-button-key="_ru" data-enable-button-click-popup="true">Search</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component"
+                style="z-index: 15;" data-button-key="_7s" data-enable-button-click-popup="true">修改</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component"
+                style="z-index: 15;" data-button-key="_sz">不弹出</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component"
+                style="z-index: 15;">Search</button>
+        </div>
+    </div>
+    <div id="detail" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="row_clicked_popup_5a" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-2">Label</label>
+                    <div class="col-sm-10">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-2">Label</label>
+                    <div class="col-sm-10">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-2">Label</label>
+                    <div class="col-sm-10">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component btn-block ui-sortable-handle"
+                    style="z-index: 15;">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="row_clicked_popup_it" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <div data-component-id="html/commontable@common" data-enable-row-click="true" style="width: 100%; height: 100%; z-index: 15; left: 0px; top: 0px;"
+                class="resize-drag draggable ag-theme-blue ui-sortable-handle" data-table-id="_m2" id="table_m2"></div>
+        </div>
+    </div>
+    <div id="row_clicked_popup_m2" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <div data-component-id="html/commontable@common" data-enable-row-click="true" style="width: 100%; height: 100%; z-index: 15; left: 0px; top: 0px;"
+                class="resize-drag draggable ag-theme-blue ui-sortable-handle" data-table-id="_we" id="table_we"></div>
+        </div>
+    </div>
+    <div id="row_clicked_popup_we" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <div data-component-id="html/commontable@common" data-enable-row-click="true" style="width: 100%; height: 100%; z-index: 15; left: 0px; top: 0px;"
+                class="resize-drag draggable ag-theme-blue ui-sortable-handle" data-table-id="_fl" id="table_fl"></div>
+        </div>
+    </div>
+    <div id="row_clicked_popup_fl" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="row_clicked_popup_rq" class="popup-window" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="button_clicked_popup_cc" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="row configurable-component gridrow-component ui-sortable-handle" data-component-id="html/gridrow@common"
+                    style="z-index: 15; left: 0px; top: 0px; width: auto; height: auto;">
+                    <div class="col-sm-4 configurable-component cloneable-component ui-sortable ui-droppable"
+                        data-component-id="html/gridcolumn@common" style="min-height: 50px;">
+                        <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                            style="z-index: 15;">
+                            <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                            <div class="col-sm-9">
+                                <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                                    data-original-title="" title="">
+                                <small class="form-text text-muted deletable-component">We'll never share your
+                                    information.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 configurable-component cloneable-component ui-sortable ui-droppable"
+                        data-component-id="html/gridcolumn@common" style="min-height: 50px;">
+                        <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                            style="z-index: 15;">
+                            <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                            <div class="col-sm-9">
+                                <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                                    data-original-title="" title="">
+                                <small class="form-text text-muted deletable-component">We'll never share your
+                                    information.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 configurable-component cloneable-component ui-sortable ui-droppable"
+                        data-component-id="html/gridcolumn@common" style="min-height: 50px;">
+                        <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                            style="z-index: 15;">
+                            <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                            <div class="col-sm-9">
+                                <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                                    data-original-title="" title="">
+                                <small class="form-text text-muted deletable-component">We'll never share your
+                                    information.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                    style="z-index: 15;" data-button-key="_u9" data-enable-button-click-popup="true">Search</button>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                    style="z-index: 15;" data-button-key="_1q">Search</button>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                    style="z-index: 15;" data-button-key="_yf">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="button_clicked_popup_2j" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                    style="z-index: 15;">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="button_clicked_popup_bm" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                    <div class="col-sm-9">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="button_clicked_popup_ru" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="row configurable-component gridrow-component ui-sortable-handle" data-component-id="html/gridrow@common"
+                    style="z-index: 15; left: 0px; top: 0px; width: auto; height: auto;">
+                    <div class="configurable-component cloneable-component ui-sortable ui-droppable col-sm-6"
+                        data-component-id="html/gridcolumn@common" style="min-height: 50px;">
+                        <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                            style="z-index: 15;">
+                            <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                            <div class="col-sm-9">
+                                <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                                    data-original-title="" title="">
+                                <small class="form-text text-muted deletable-component">We'll never share your
+                                    information.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="configurable-component cloneable-component ui-sortable ui-droppable col-sm-6"
+                        data-component-id="html/gridcolumn@common" style="min-height: 50px;">
+                        <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                            style="z-index: 15;">
+                            <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                            <div class="col-sm-9">
+                                <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                                    data-original-title="" title="">
+                                <small class="form-text text-muted deletable-component">We'll never share your
+                                    information.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="button_clicked_popup_7s" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <h1 class="cloneable-component ui-sortable-handle" style="z-index: 15;">修改</h1>
+            </form>
+        </div>
+    </div>
+    <div id="row_clicked_popup_o8" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;">Search</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;">Search</button>
+        </div>
+    </div>
+    <div id="row_clicked_popup_76" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <form class="configurable-component ui-sortable ui-droppable ui-sortable-handle" style="height: 100%; width: 100%; z-index: 15; left: 0px; top: 0px;"
+                data-component-id="html/form@common">
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstraptextinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                    <div class="col-sm-9">
+                        <input data-component-id="html/bootstraptextinput@common" type="text" class="form-control"
+                            data-original-title="" title="">
+                        <small class="form-text text-muted deletable-component">We'll never share your information.</small>
+                    </div>
+                </div>
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstrapdatetimeinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                    <div class="col-sm-9">
+                        <input style="height: calc(2.25rem + 2px);" data-component-id="html/bootstrapdatetimeinput@common"
+                            data-config-info="{'dateFmt': 'yyyy-MM-dd HH:mm'}" type="text" class="form-control Wdate"
+                            data-original-title="" title=""> </div>
+                </div>
+                <div class="form-group sortable row ui-sortable-handle" data-component-id="html/bootstrapfileinputfield@common"
+                    style="z-index: 15;">
+                    <label for="" data-component-id="html/label@common" class="deletable-component col-sm-3">Text</label>
+                    <div class="col-sm-9">
+                        <input type="file" data-component-id="html/bootstrapfileinput@common" class="form-control-file"
+                            data-original-title="" title=""> </div>
+                </div>
+                <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component btn-block ui-sortable-handle"
+                    style="z-index: 15;" data-button-key="_tq">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="button_clicked_popup_u9" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;" data-button-key="_31">Search</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;" data-button-key="_5d">Search</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;" data-button-key="_1y">Search</button>
+            <button data-component-id="html/button@common" type="button" class="btn btn-primary cloneable-component ui-sortable-handle"
+                style="z-index: 15;" data-button-key="_or">Search</button>
+        </div>
+    </div>
+    <div id="cell_clicked_popup_5a" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;">
+            <div data-component-id="html/commontable@common" style="width: 100%; height: 100%; z-index: 15; left: 0px; top: 0px;"
+                class="resize-drag draggable ag-theme-blue ui-sortable-handle" data-table-id="_gh" data-cell-click-url="data"
+                id="table_gh"></div>
+        </div>
+    </div>
+    <div id="row_clicked_popup_8c" class="popup-window layui-layer-wrap" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="cell_clicked_popup_8c" class="popup-window" style="display: none;">
+        <div class="content ui-sortable ui-droppable" style="width: 100%; height: 100%;"></div>
+    </div>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/gridster/jquery.gridster.js"></script>
+    <script type="text/javascript" src="../../js/plugins/jquery.serializejson.min.js"></script>
+    <script src="../../js/plugins/datepicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../js/plugins/ag-grid/ag-grid.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/layer/layer.min.js"></script>
+    <!-- <script type="text/javascript" src="../../js/plugins/fundodoo.js"></script> -->
+    <script src="../../js/page_common/common.js" type="text/javascript"></script>
+    <script src="../../js/page_common/fundodooPageTemplate.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script src="../../js/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min-4.1.3.js"></script>
+    <script src="../../js/plugins/chart/Chart.bundle.min.js"></script>
+    <script class="reservedScript" data-script-type="tooltip"> $(function () { $('input, select, textarea').tooltip({ "position": { "my": "left top", "at": "right+5 top-5", "collision": "none" } }); }); </script>
+    <script type="text/javascript">
+        function popupCommon(event, popup, gridDiv) {
+            console.log(event, popup, gridDiv);
+            var url = gridDiv.attr('data-cell-click-url');
+            var data = event.data;
+            layer.open({
+                type: 1,
+                title: '信息',
+                area: ['660px', '330px'],
+                skin: 'layui-layer-rim', //加上边框
+                content: popup,
+                end: function end() { }
+            });
+            $.ajax({
+                url: config.fundodooApiDomainUrl + url,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                method: 'POST',
+                async: true,
+                traditional: true,
+                data: data,
+                fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                success: function success(response) {
+                    var data = response.data;
+                    if (data.length) {
+                        var newColDefs = gridOptions_gh.columnDefs.filter(function (colDef) {
+                            return data[0][colDef.field];
+                        })
+                        gridOptions_gh.api.setColumnDefs(newColDefs);
+                    }
+                    gridOptions_gh.api.setRowData(response.data);
+                },
+                error: function error() { }
+            });
+        }
+    </script>
+    <script class="removeableScript">
+        function initGridOutofBuilder() {
+            if ($('.gridster').length) {
+                var gridster = $(".gridster").gridster({
+                    widget_selector: 'div.gridster > div',
+                    widget_margins: [5, 5],
+                    widget_base_dimensions: ['auto', 50],
+                    shift_widgets_up: false,
+                    shift_larger_widgets_down: false,
+                    max_cols: 12,
+                    max_rows: 20
+                }).data('gridster');
+                gridster.disable();
+            }
+        }
+        $(function () {
+            initGridOutofBuilder();
+        })
+    </script>
+    <script class="tableScript">
+        var eGridDiv_5a = $('#table_5a');
+        var gridOptions_5a = {
+            columnDefs: [{
+                "headerName": "年龄",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": true,
+                "headerCheckboxSelection": true,
+                "suppressMovable": true
+            }, {
+                "headerName": "姓名",
+                "field": "name",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "性别",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }],
+            enableSorting: true,
+            enableFilter: false,
+            rowSelection: 'multiple',
+            suppressRowClickSelection: true,
+            suppressFieldDotNotation: true,
+            pagination: undefined,
+            paginationAutoPageSize: undefined,
+            paginationPageSize: undefined,
+            onCellClicked: function (event) {
+                if (eGridDiv_5a.attr('data-enable-cell-click') == 'true') {
+                    if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
+                        var popup = $('#' + 'cell_clicked_popup' + '_5a');
+                        popupCommon(event, popup, eGridDiv_5a);
+                    }
+                }
+            },
+            onRowClicked: function (event) {
+                if (eGridDiv_5a.attr('data-enable-row-click') == 'true') {
+                    popupDetail(eGridDiv_5a.attr('data-row-click-url'), event.data, $('#' + 'row_clicked_popup' + '_5a'));
+                }
+            },
+            onRowSelected: function (event) {
+                if (event.node.isSelected() && eGridDiv_5a.attr('data-related-table')) {
+                    if (window['gridOptions' + eGridDiv_5a.attr('data-related-table')]) {
+                        window['gridOptions' + eGridDiv_5a.attr('data-related-table')].api.setRowData([event.data]);
+                    }
+                }
+            }
+        };
+        new agGrid.Grid(eGridDiv_5a.get(0), gridOptions_5a);
+        gridOptions_5a.api.setRowData([]);
+        var eGridDiv_m2 = $('#table_m2');
+        var gridOptions_m2 = {
+            columnDefs: [{
+                "headerName": "Athelete",
+                "field": "athelete",
+                "width": "",
+                "checkboxSelection": true,
+                "headerCheckboxSelection": false,
+                "suppressMovable": true
+            }, {
+                "headerName": "Age",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }, {
+                "headerName": "Country",
+                "field": "country",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }],
+            enableSorting: true,
+            enableFilter: false,
+            rowSelection: 'multiple',
+            suppressRowClickSelection: true,
+            suppressFieldDotNotation: true,
+            pagination: undefined,
+            paginationAutoPageSize: undefined,
+            paginationPageSize: undefined,
+            onCellClicked: function (event) {
+                if (eGridDiv_m2.attr('data-enable-cell-click') == 'true') {
+                    if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
+                        var popup = $('#' + 'cell_clicked_popup' + '_m2');
+                        popupCommon(event, popup, eGridDiv_m2);
+                    }
+                }
+            },
+            onRowClicked: function (event) {
+                if (eGridDiv_m2.attr('data-enable-row-click') == 'true') {
+                    popupDetail(eGridDiv_m2.attr('data-row-click-url'), event.data, $('#' + 'row_clicked_popup' + '_m2'));
+                }
+            },
+            onRowSelected: function (event) {
+                if (event.node.isSelected() && eGridDiv_m2.attr('data-related-table')) {
+                    if (window['gridOptions' + eGridDiv_m2.attr('data-related-table')]) {
+                        window['gridOptions' + eGridDiv_m2.attr('data-related-table')].api.setRowData([event.data]);
+                    }
+                }
+            }
+        };
+        new agGrid.Grid(eGridDiv_m2.get(0), gridOptions_m2);
+        gridOptions_m2.api.setRowData([]);
+        var eGridDiv_we = $('#table_we');
+        var gridOptions_we = {
+            columnDefs: [{
+                "headerName": "Athelete",
+                "field": "athelete",
+                "width": "",
+                "checkboxSelection": true,
+                "headerCheckboxSelection": false,
+                "suppressMovable": true
+            }, {
+                "headerName": "Age",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }, {
+                "headerName": "Country",
+                "field": "country",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }],
+            enableSorting: true,
+            enableFilter: false,
+            rowSelection: 'multiple',
+            suppressRowClickSelection: true,
+            suppressFieldDotNotation: true,
+            pagination: undefined,
+            paginationAutoPageSize: undefined,
+            paginationPageSize: undefined,
+            onCellClicked: function (event) {
+                if (eGridDiv_we.attr('data-enable-cell-click') == 'true') {
+                    if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
+                        var popup = $('#' + 'cell_clicked_popup' + '_we');
+                        popupCommon(event, popup, eGridDiv_we);
+                    }
+                }
+            },
+            onRowClicked: function (event) {
+                if (eGridDiv_we.attr('data-enable-row-click') == 'true') {
+                    popupDetail(eGridDiv_we.attr('data-row-click-url'), event.data, $('#' + 'row_clicked_popup' + '_we'));
+                }
+            },
+            onRowSelected: function (event) {
+                if (event.node.isSelected() && eGridDiv_we.attr('data-related-table')) {
+                    if (window['gridOptions' + eGridDiv_we.attr('data-related-table')]) {
+                        window['gridOptions' + eGridDiv_we.attr('data-related-table')].api.setRowData([event.data]);
+                    }
+                }
+            }
+        };
+        new agGrid.Grid(eGridDiv_we.get(0), gridOptions_we);
+        gridOptions_we.api.setRowData([]);
+        var eGridDiv_fl = $('#table_fl');
+        var gridOptions_fl = {
+            columnDefs: [{
+                "headerName": "Athelete",
+                "field": "athelete",
+                "width": "",
+                "checkboxSelection": true,
+                "headerCheckboxSelection": false,
+                "suppressMovable": true
+            }, {
+                "headerName": "Age",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }, {
+                "headerName": "Country",
+                "field": "country",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false
+            }],
+            enableSorting: true,
+            enableFilter: false,
+            rowSelection: 'multiple',
+            suppressRowClickSelection: true,
+            suppressFieldDotNotation: true,
+            pagination: undefined,
+            paginationAutoPageSize: undefined,
+            paginationPageSize: undefined,
+            onCellClicked: function (event) {
+                if (eGridDiv_fl.attr('data-enable-cell-click') == 'true') {
+                    if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
+                        var popup = $('#' + 'cell_clicked_popup' + '_fl');
+                        popupCommon(event, popup, eGridDiv_fl);
+                    }
+                }
+            },
+            onRowClicked: function (event) {
+                if (eGridDiv_fl.attr('data-enable-row-click') == 'true') {
+                    popupDetail(eGridDiv_fl.attr('data-row-click-url'), event.data, $('#' + 'row_clicked_popup' + '_fl'));
+                }
+            },
+            onRowSelected: function (event) {
+                if (event.node.isSelected() && eGridDiv_fl.attr('data-related-table')) {
+                    if (window['gridOptions' + eGridDiv_fl.attr('data-related-table')]) {
+                        window['gridOptions' + eGridDiv_fl.attr('data-related-table')].api.setRowData([event.data]);
+                    }
+                }
+            }
+        };
+        new agGrid.Grid(eGridDiv_fl.get(0), gridOptions_fl);
+        gridOptions_fl.api.setRowData([]);
+        var eGridDiv_gh = $('#table_gh');
+        var gridOptions_gh = {
+            columnDefs: [{
+                "headerName": "Athelete",
+                "field": "athelete",
+                "width": "",
+                "checkboxSelection": true,
+                "headerCheckboxSelection": false,
+                "suppressMovable": true
+            }, {
+                "headerName": "Age",
+                "field": "age",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "Country",
+                "field": "country",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "Company",
+                "field": "company",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "gender",
+                "field": "gender",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "test",
+                "field": "test",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }, {
+                "headerName": "Phone",
+                "field": "phone",
+                "width": "",
+                "checkboxSelection": false,
+                "headerCheckboxSelection": false,
+                "suppressMovable": false
+            }],
+            enableSorting: true,
+            enableFilter: false,
+            rowSelection: 'multiple',
+            suppressRowClickSelection: true,
+            suppressFieldDotNotation: true,
+            pagination: false,
+            paginationAutoPageSize: false,
+            paginationPageSize: undefined,
+            onCellClicked: function (event) {
+                if (eGridDiv_gh.attr('data-enable-cell-click') == 'true') {
+                    if (typeof popupCommon !== 'undefined' && typeof popupCommon == 'function') {
+                        var popup = $('#' + 'cell_clicked_popup' + '_gh');
+                        popupCommon(event, popup, eGridDiv_gh);
+                    }
+                }
+            },
+            onRowClicked: function (event) {
+                if (eGridDiv_gh.attr('data-enable-row-click') == 'true') {
+                    popupDetail(eGridDiv_gh.attr('data-row-click-url'), event.data, $('#' + 'row_clicked_popup' + '_gh'));
+                }
+            },
+            onRowSelected: function (event) {
+                if (event.node.isSelected() && eGridDiv_gh.attr('data-related-table')) {
+                    if (window['gridOptions' + eGridDiv_gh.attr('data-related-table')]) {
+                        window['gridOptions' + eGridDiv_gh.attr('data-related-table')].api.setRowData([event.data]);
+                    }
+                }
+            }
+        };
+        new agGrid.Grid(eGridDiv_gh.get(0), gridOptions_gh);
+        gridOptions_gh.api.setRowData([]);
+    </script>
+    <script class="removeableScript">
+        function generateOptions(el, response) {
+            var value = $(el).attr('data-value-mapping') || 'value';
+            var text = $(el).attr('data-text-mapping') || 'text';
+            response.forEach(function (option) {
+                $('<option></option>').val(option[value]).text(option[text]).appendTo($(el));
+            });
+        }
+        [].slice.call($('body').find('[data-auto-select-id]')).filter(function (el) {
+            return $(el).attr('data-url');
+        }).forEach(function (el) {
+            var data = {
+                owner: 'Common',
+                queryId: 'findIdType',
+                version: '10001',
+                paramSource: null
+            };
+            $.ajax({
+                url: config.fundodooApiDomainUrl + $(el).attr('data-url'),
+                dataType: 'json',
+                method: 'POST',
+                data: data,
+                async: true,
+                success: function (response) {
+                    generateOptions(el, response.data);
+                }
+            });
+        });
+    </script>
+    <script class="removeableScript">
+        // 右侧内容查询开始
+        var grids = $('[data-table-id]').toArray().map(function (element) {
+            var id = $(element).attr('data-table-id');
+            var key = $(element).attr('data-response-data-key');
+            var transposeKey = $(element).attr('data-ag-grid-transpose-key');
+            return {
+                gridOptions: window['gridOptions' + id],
+                key: key,
+                transposeKey: transposeKey
+            };
+        });
+        $('form.form-box').find('input[type=file][data-url]').on('change', function () {
+            var formData = new FormData();
+            formData.append(this.name, this.files[0]);
+            $.ajax({
+                url: config.fundodooApiDomainUrl + $(this).attr('data-url'),
+                dataType: 'json',
+                contentType: false,
+                method: 'POST',
+                async: true,
+                processData: false,
+                traditional: true,
+                data: formData,
+                fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                success: function (response, status, xhr) {
+                    layer.alert('文件上传成功', {
+                        icon: 1,
+                        shadeClose: true,
+                        title: '提示'
+                    });
+                }
+            });
+        });
+
+        function submitForm(form, url, successCb, errorCb) {
+            var valid = true;
+            form.find('input[required], select[required], textarea[required]').each(function () {
+                if (!this.value) {
+                    valid = false;
+                    layer.alert(this.name + '输入不能为空', {
+                        icon: 2,
+                        shadeClose: true,
+                        title: '提示'
+                    });
+                    return false;
+                }
+            });
+            if (valid) {
+                var formData = new FormData();
+                var data = form.serializeJSON();
+                data.tok = sessionStorage.getItem('FUNDODOO_TOKEN');
+                $.each($('input[type=file]'), function (i, element) {
+                    formData.append(element.name, element.files[0]);
+                });
+                Object.keys(data).forEach(function (value) {
+                    formData.append(value, data[value]);
+                });
+                var containsFileInput = form.find('input[type=file]').length > 0;
+                $.ajax({
+                    url: config.fundodooApiDomainUrl + url,
+                    dataType: 'json',
+                    contentType: containsFileInput ? false : 'application/x-www-form-urlencoded',
+                    method: 'POST',
+                    async: true,
+                    processData: !containsFileInput,
+                    traditional: true,
+                    data: containsFileInput ? formData : data,
+                    fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                    success: successCb,
+                    error: errorCb
+                });
+            }
+        }
+    </script>
+    <script class="removeableScript">
+        function popupAdd() {
+            layer.open({
+                type: 1,
+                title: '新增',
+                area: ['600px', '350px'],
+                skin: 'layui-layer-rim', //加上边框
+                content: $('div.popup-window#add'),
+                end: function end() {
+                    $('div.popup-window#add form').trigger('reset');
+                }
+            });
+        }
+
+        function popupEdit() {
+            var openPopup = function openPopup() {
+                layer.open({
+                    type: 1,
+                    title: '修改',
+                    area: ['600px', '350px'],
+                    skin: 'layui-layer-rim', //加上边框
+                    content: $('div.popup-window#edit'),
+                    end: function end() {
+                        $('div.popup-window#edit form').trigger('reset');
+                    }
+                });
+            };
+            var setFormValues = function setFormValues(selectedRow) {
+                $('div.popup-window#edit form').find('input:not([type=submit]), select').each(function () {
+                    var field = $(this).attr('data-row-field') || $(this).attr('name');
+                    $(this).val(selectedRow[field]);
+                });
+            };
+            if (grids.length) {
+                var selectedRows = grids[0].gridOptions.api.getSelectedRows();
+                if (selectedRows.length == 0) {
+                    layer.msg('请选择需要修改的数据', {
+                        icon: 5
+                    });
+                } else if (selectedRows.length > 1) {
+                    layer.msg('只允许同时修改一条数据', {
+                        icon: 5
+                    });
+                } else {
+                    setFormValues(selectedRows[0]);
+                    openPopup();
+                }
+            } else {
+                layer.msg('请选择需要修改的数据', {
+                    icon: 5
+                });
+            }
+        }
+
+        function popupDelete() {
+            var openPopup = function openPopup() {
+                layer.confirm('您确定需要删除吗？', {
+                    btn: ['确定', '取消']
+                }, function () {
+                    $.ajax({
+                        url: config.fundodooApiDomainUrl + $('button#delete').attr('data-url'),
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded',
+                        method: 'POST',
+                        async: true,
+                        traditional: true,
+                        data: grids[0].gridOptions.api.getSelectedRows(),
+                        fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                        success: function success() {
+                            layer.closeAll();
+                            query();
+                        },
+                        error: function error() { }
+                    });
+                }, function () { });
+            };
+            if (grids.length) {
+                var selectedRows = grids[0].gridOptions.api.getSelectedRows();
+                if (selectedRows.length == 0) {
+                    layer.msg('请选择需要删除的数据', {
+                        icon: 5
+                    });
+                } else {
+                    openPopup();
+                }
+            } else {
+                layer.msg('请选择需要删除的数据', {
+                    icon: 5
+                });
+            }
+        }
+
+        function popupDetail(url, data, popup) {
+            // Compatible with previous only one detail popup window
+            var content = popup && popup.length ? popup : $('div.popup-window#detail');
+            var openPopup = function openPopup() {
+                layer.open({
+                    type: 1,
+                    title: '信息',
+                    area: ['660px', '330px'],
+                    skin: 'layui-layer-rim', //加上边框
+                    content: content,
+                    end: function end() { }
+                });
+            };
+            if (content.length) {
+                if (url && data) {
+                    $.ajax({
+                        url: config.fundodooApiDomainUrl + url,
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded',
+                        method: 'POST',
+                        async: true,
+                        traditional: true,
+                        data: data,
+                        fundodooAjax: true, //true:开启计时功能，false（或去掉此属性）：不开启计时功能
+                        success: function success(response) {
+                            content.find('[data-component-id="html/labelfield@common"]').each(function (_, element) {
+                                var key = $(element).children('span:last-child').attr('data-key-mapping');
+                                $(element).children('span:last-child').text(key ? response.data[key] || '' : '');
+                            });
+                            content.find('img').each(function (_, image) {
+                                var $image = $(image);
+                                var data = response.data[$image.attr('data-key-mapping')];
+                                if (data) {
+                                    $image.attr('src', 'data:image/' + $image.attr('data-image-format') + ';base64,' + data);
+                                } else {
+                                    $image.attr('src', $image.attr('data-image-placeholder'));
+                                }
+                            });
+                            openPopup();
+                        },
+                        error: function error() { }
+                    });
+                } else {
+                    openPopup();
+                }
+            }
+        }
+
+        function exportData() {
+            if (grids.length) {
+                grids[0].gridOptions.api.exportDataAsCsv();
+            }
+        }
+        $('form.popup-form input[type=submit]').click(function () {
+            submitForm($(this).parents('form'), $('button#' + $(this).parents('form').attr('data-related-button')).attr('data-url'), function (response) {
+                layer.closeAll();
+                query();
+            }, function () { });
+        });
+    </script>
+    <script class="removeableScript">
+        function setAgGridData(grid, data) {
+            var gridOptions = grid.gridOptions;
+            var transposeKey = grid.transposeKey;
+            if (transposeKey) {
+                var transposedData = gridOptions.columnDefs.filter(function (colDef) {
+                    return colDef.field !== transposeKey;
+                }).map(function (colDef) {
+                    var key = colDef.field;
+                    var transposed = {};
+                    transposed[transposeKey] = colDef.headerName;
+                    data.forEach(function (item) {
+                        transposed[item[transposeKey]] = item[key];
+                    });
+                    return transposed;
+                });
+                var newColDefs = [{
+                    headerName: '',
+                    field: transposeKey,
+                    cellStyle: {
+                        'font-size': 'large'
+                    },
+                    pinned: 'left'
+                }].concat(data.map(function (item) {
+                    return {
+                        headerName: item[transposeKey],
+                        field: $.isNumeric(item[transposeKey]) ? item[transposeKey].toString() : item[transposeKey]
+                    };
+                }));
+                gridOptions.api.setColumnDefs(newColDefs);
+                gridOptions.api.setRowData(transposedData);
+            } else {
+                gridOptions.api.setRowData(data);
+            }
+        }
+
+        function query() {
+            var queryForm = $(this).parents('form');
+            var queryUrl = $(this).attr('data-url');
+            submitForm(queryForm, queryUrl, function (response) {
+                if (Array.isArray(response.data)) {
+                    if (grids.length) {
+                        var grid = grids[0];
+                        setAgGridData(grids[0], response.data);
+                    }
+                } else {
+                    $.each(response.data, function (key, value) {
+                        $.each(grids, function (i, grid) {
+                            if (grid.key == key) {
+                                setAgGridData(grid, value);
+                                return false;
+                            }
+                        });
+                    });
+                }
+            }, function () { });
+        }
+        $('form button#dataSearch').click(query);
+        $('div.gridster div form button[data-enable-button-click-popup!=true]').click(query);
+    </script>
+    <script class="removeableScript">
+        function processResults(res, el) {
+            var value = $(el).attr('data-value-mapping') || 'value';
+            var text = $(el).attr('data-text-mapping') || 'text';
+            return {
+                data: res.data.map(function (v) {
+                    return {
+                        id: v[value],
+                        text: v[text]
+                    };
+                })
+            };
+        }
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').each(function () {
+                var self = this;
+                if ($(self).attr('data-url')) {
+                    $.ajax({
+                        url: config.fundodooApiDomainUrl + $(self).attr('data-url'),
+                        dataType: 'json',
+                        success: function (res) {
+                            $(self).select2(processResults(res, self));
+                        }
+                    });
+                } else {
+                    $(self).select2();
+                }
+            });
+        });
+    </script>
+    <script class="removeableScript">
+        $('body').on('click', 'button', function () {
+            if ($(this).attr('data-enable-button-click-popup') === 'true') {
+                popupDetail(null, null, $('#' + 'button_clicked_popup' + $(this).attr('data-button-key')));
+            }
+        });
+    </script>
+</body>
+
+</html>
