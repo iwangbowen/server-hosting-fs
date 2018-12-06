@@ -1,6 +1,5 @@
-const editor = require('./editor');
-const noide = require('./noide');
 const fs = require('./fs');
+const builder = require('./builder');
 
 const iframeEl = document.getElementById('iframe');
 const $ = window.jQuery;
@@ -20,16 +19,16 @@ function sendMessage(msg) {
 
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        const {type, html, js, path} = newMsg;
+        const { type, html, js, path } = newMsg;
         if (type === ADD || type === EDIT) {
             if (!isIgnoreMessage()) {
-                const file = noide.current;
-                const session = noide.getSession(file);
-                if (session) {
-                    if (session.getValue() !== html) {
-                        session.setValue(html, true);
-                        editor.execCommand('save');
-                    }
+                // When users open html pages in builder,
+                // we directly save new html content to fs
+                // without having to do anything with editor
+                if (builder.activePagePath === path) {
+                    if (builder[pages][path] !== html)
+                    fs.writeFile(path, html);
+                    builder[pages][path] = html;
                 }
             }
         } else if (type === UPDATE_SHARED_JS) {

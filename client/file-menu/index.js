@@ -9,6 +9,7 @@ var path = require('path');
 const { sendMessage, Message, ADD, EDIT, UPDATE_SHARED_JS } = require('../message');
 const noide = require('../noide');
 const { setWorkspaceInBuilder } = require('../index');
+const builder = require('../builder');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -96,44 +97,27 @@ function FileMenu(el) {
       type: ADD,
       template: template
     }));
-    const file = noide.getFile(relativePath);
-    noide.current = file;
-    let session = noide.getSession(file);
-    if (session) {
-      setWorkspaceInBuilder();
-    } else {
-      fs.readFile(file.relativePath, function (err, payload) {
-        if (err) {
-          return util.handleError(err);
-        }
-        session = noide.addSession(file, payload.contents);
-        setWorkspaceInBuilder();
-      });
-    }
+    setWorkspaceInBuilder();
   }
 
-  function mkblankcustom(file) {
+  function mkNewPage(file, template) {
     hide();
     resetPasteBuffer();
-    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, 'pds', addCallback);
-  }
-
-  function mkblankgeneral(file) {
-    hide();
-    resetPasteBuffer();
-    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, 'layout', addCallback);
+    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, template, addCallback);
+    builder.activePagePath = file.path;
   }
 
   function openInBuilder(file) {
     hide();
-    noide.current = file;
     let session = noide.getSession(file);
     if (session) {
       sendMessage(new Message({
         type: EDIT,
-        html: session.getValue()
+        html: session.getValue(),
+        path: file.path
       }));
       setWorkspaceInBuilder();
+      builder.activePagePath = file.path;
     } else {
       fs.readFile(file.relativePath, function (err, payload) {
         if (err) {
@@ -142,9 +126,11 @@ function FileMenu(el) {
         session = noide.addSession(file, payload.contents);
         sendMessage(new Message({
           type: EDIT,
-          html: session.getValue()
+          html: session.getValue(),
+          path: file.path
         }));
         setWorkspaceInBuilder();
+        builder.activePagePath = file.path;
       })
     }
   }
@@ -190,8 +176,7 @@ function FileMenu(el) {
     setPasteBuffer,
     openInBuilder,
     quit,
-    mkblankcustom,
-    mkblankgeneral,
+    mkNewPage,
     updateSharedJS
   };
 
