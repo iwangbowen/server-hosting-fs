@@ -1,5 +1,6 @@
 const editor = require('./editor');
 const noide = require('./noide');
+const fs = require('./fs');
 
 const iframeEl = document.getElementById('iframe');
 const $ = window.jQuery;
@@ -19,24 +20,37 @@ function sendMessage(msg) {
 
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        if (!isIgnoreMessage()) {
-            const file = noide.current;
-            const session = noide.getSession(file);
-            if (session) {
-                if (session.getValue() !== newMsg) {
-                    session.setValue(newMsg, true);
-                    editor.execCommand('save');
+        const {type, html, js, path} = newMsg;
+        if (type === ADD || type === EDIT) {
+            if (!isIgnoreMessage()) {
+                const file = noide.current;
+                const session = noide.getSession(file);
+                if (session) {
+                    if (session.getValue() !== html) {
+                        session.setValue(html, true);
+                        editor.execCommand('save');
+                    }
                 }
             }
+        } else if (type === UPDATE_SHARED_JS) {
+            // User may choose to update shared js file without opening it in editor,
+            // we cannot save to current active editor
+            // So we directly update file in fs
+            fs.writeFile(path, js);
         }
     });
 }
 
+const ADD = 'add';
+const EDIT = 'edit';
+const UPDATE_SHARED_JS = 'updateSharedJS';
 class Message {
-    constructor(type, template, html) {
+    constructor({ type, template, html, path, js }) {
         this.type = type;
         this.template = template;
         this.html = html;
+        this.path = path;
+        this.js = js;
     }
 };
 
@@ -45,5 +59,8 @@ module.exports = {
     initMessageListener,
     Message,
     setIgnoreMessage,
-    isIgnoreMessage
+    isIgnoreMessage,
+    ADD,
+    EDIT,
+    UPDATE_SHARED_JS
 };

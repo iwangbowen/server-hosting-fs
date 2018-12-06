@@ -11,6 +11,11 @@
     </if>
     <li key="rename"><a onclick="{model.rename(file)}"><i class="fa fa-pencil"></i> Rename</a>
     </li>
+    <if condition="file.ext == '.js'">
+      <li key="updateSharedJS">
+        <a onclick="{model.updateSharedJS(file)}"><i class="fa fa-download"> Update shared JavaScript</i></a>
+      </li>
+    </if>
     <li key="divider-1" class="divider"></li>
     <li key="cut"><a onclick="{model.setPasteBuffer(file, 'cut')}"><i class="fa fa-scissors"></i> Cut</a>
     </li>

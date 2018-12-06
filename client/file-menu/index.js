@@ -6,7 +6,7 @@ var view = require('./view.html');
 var copied;
 var $ = window.jQuery;
 var path = require('path');
-const { sendMessage, Message } = require('../message');
+const { sendMessage, Message, ADD, EDIT, UPDATE_SHARED_JS } = require('../message');
 const noide = require('../noide');
 const { setWorkspaceInBuilder } = require('../index');
 
@@ -92,7 +92,10 @@ function FileMenu(el) {
   }
 
   function addCallback(template, relativePath) {
-    sendMessage(new Message('add', template));
+    sendMessage(new Message({
+      type: ADD,
+      template: template
+    }));
     const file = noide.getFile(relativePath);
     noide.current = file;
     let session = noide.getSession(file);
@@ -126,7 +129,10 @@ function FileMenu(el) {
     noide.current = file;
     let session = noide.getSession(file);
     if (session) {
-      sendMessage(new Message('edit', '', session.getValue()));
+      sendMessage(new Message({
+        type: EDIT,
+        html: session.getValue()
+      }));
       setWorkspaceInBuilder();
     } else {
       fs.readFile(file.relativePath, function (err, payload) {
@@ -134,10 +140,22 @@ function FileMenu(el) {
           return util.handleError(err);
         }
         session = noide.addSession(file, payload.contents);
-        sendMessage(new Message('edit', '', session.getValue()));
+        sendMessage(new Message({
+          type: EDIT,
+          html: session.getValue()
+        }));
         setWorkspaceInBuilder();
       })
     }
+  }
+
+  function updateSharedJS(file) {
+    const path = file.path;
+    sendMessage(new Message({
+      type: UPDATE_SHARED_JS,
+      path
+    }));
+    hide();
   }
 
   function mkdir(file) {
@@ -173,7 +191,8 @@ function FileMenu(el) {
     openInBuilder,
     quit,
     mkblankcustom,
-    mkblankgeneral
+    mkblankgeneral,
+    updateSharedJS
   };
 
   function hide() {
