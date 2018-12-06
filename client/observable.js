@@ -31,8 +31,6 @@ function Observable (eventsObj) {
     }
   }, this)
 
-  console.log(_listeners);
-
   // this.on = on
   // this.off = off
   // this.emit = emit

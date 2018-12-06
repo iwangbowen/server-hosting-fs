@@ -2,53 +2,18 @@ var page = require('page')
 var patch = require('../patch')
 var fs = require('../fs')
 var view = require('./view.html')
-const noide = require('../noide');
+const { sendMessage, ADD, Message } = require('../message');
+const builder = require('../builder');
+const { setWorkspaceInBuilder } = require('../index');
 
 function FileEditor(el) {
   var model = {
     mode: null,
     file: null,
-    openInBuilder: false,
-    template: null,
     callback: null,
     rename: fs.rename,
     mkfile: function (path) {
-      let httpResolved = false;
-      let socketResolved = false;
-      let relativePath;
-
-      const afterAllResolved = () => {
-        this.callback(this.template, relativePath);
-      };
-
-      const isAllResolved = () => httpResolved && socketResolved;
-
-      const addFileCallback = () => {
-        httpResolved = true;
-        if (isAllResolved()) {
-          afterAllResolved();
-        }
-        // Do not forget to remove addFile event listener after the listener got called
-        noide.offAddFile(addFileCallback);
-      };
-      noide.onAddFile(addFileCallback);
-      fs.mkfile(path, (err, payload) => {
-        if (!err) {
-          // Open the new file. Leave a short delay
-          // to allow it to register from the socket
-          setTimeout(() => {
-            if (this.openInBuilder) {
-              socketResolved = true;
-              relativePath = payload.relativePath;
-              if (isAllResolved()) {
-                afterAllResolved();
-              }
-            } else {
-              page('/file?path=' + payload.relativePath);
-            }
-          }, 750);
-        }
-      });
+      fs.mkfile(path, this.callback);
     },
     mkdir: fs.mkdir
   }
@@ -59,12 +24,28 @@ function FileEditor(el) {
     patch(el, view, model, hide)
   }
 
-  function show(file, mode, openInBuilder, template, callback) {
+  function show(file, mode, openInBuilder, template) {
     model.file = file;
     model.mode = mode;
-    model.openInBuilder = openInBuilder;
-    model.template = template;
-    model.callback = callback;
+    model.callback = (err, payload) => {
+      if (!err) {
+        // Open the new file. Leave a short delay
+        // to allow it to register from the socket
+        setTimeout(() => {
+          if (openInBuilder) {
+            sendMessage(new Message({
+              type: ADD,
+              template: template,
+              relativePath: payload.relativePath
+            }));
+            setWorkspaceInBuilder();
+            builder.activePageRelativePath = payload.relativePath;
+          } else {
+            page('/file?path=' + payload.relativePath);
+          }
+        }, 750);
+      }
+    };
     patch(el, view, model, hide);
     var input = el.querySelector('input');
     input.focus();
@@ -75,8 +56,8 @@ function FileEditor(el) {
 FileEditor.prototype.rename = function (file) {
   this.show(file, 'rename')
 }
-FileEditor.prototype.mkfile = function (dir, openInBuilder = false, template, callback) {
-  this.show(dir, 'mkfile', openInBuilder, template, callback);
+FileEditor.prototype.mkfile = function (dir, openInBuilder = false, template) {
+  this.show(dir, 'mkfile', openInBuilder, template);
 }
 FileEditor.prototype.mkdir = function (dir) {
   this.show(dir, 'mkdir')

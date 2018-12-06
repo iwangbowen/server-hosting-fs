@@ -6,7 +6,7 @@ var view = require('./view.html');
 var copied;
 var $ = window.jQuery;
 var path = require('path');
-const { sendMessage, Message, ADD, EDIT, UPDATE_SHARED_JS } = require('../message');
+const { sendMessage, Message, EDIT, UPDATE_SHARED_JS } = require('../message');
 const noide = require('../noide');
 const { setWorkspaceInBuilder } = require('../index');
 const builder = require('../builder');
@@ -92,19 +92,10 @@ function FileMenu(el) {
     fileEditor.mkfile(file.isDirectory ? file : file.parent)
   }
 
-  function addCallback(template, relativePath) {
-    sendMessage(new Message({
-      type: ADD,
-      template: template
-    }));
-    setWorkspaceInBuilder();
-  }
-
   function mkNewPage(file, template) {
     hide();
     resetPasteBuffer();
-    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, template, addCallback);
-    builder.activePagePath = file.path;
+    fileEditor.mkfile(file.isDirectory ? file : file.parent, true, template);
   }
 
   function openInBuilder(file) {

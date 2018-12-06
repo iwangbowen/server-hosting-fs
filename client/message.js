@@ -19,16 +19,17 @@ function sendMessage(msg) {
 
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        const { type, html, js, path } = newMsg;
+        const { type, html, js, relativePath } = newMsg;
         if (type === ADD || type === EDIT) {
             if (!isIgnoreMessage()) {
                 // When users open html pages in builder,
                 // we directly save new html content to fs
                 // without having to do anything with editor
-                if (builder.activePagePath === path) {
-                    if (builder[pages][path] !== html)
-                    fs.writeFile(path, html);
-                    builder[pages][path] = html;
+                if (builder.activePageRelativePath === relativePath) {
+                    if (builder.pages[relativePath] !== html) {
+                        fs.writeFile(relativePath, html);
+                        builder.pages[relativePath] = html;
+                    }
                 }
             }
         } else if (type === UPDATE_SHARED_JS) {
@@ -44,12 +45,13 @@ const ADD = 'add';
 const EDIT = 'edit';
 const UPDATE_SHARED_JS = 'updateSharedJS';
 class Message {
-    constructor({ type, template, html, path, js }) {
+    constructor({ type, template, html, path, js, relativePath }) {
         this.type = type;
         this.template = template;
         this.html = html;
         this.path = path;
         this.js = js;
+        this.relativePath = relativePath;
     }
 };
 
