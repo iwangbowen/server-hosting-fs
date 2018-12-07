@@ -1,45 +1,9 @@
 const fs = require('./fs');
-const builder = require('./builder');
+const util = require('./util');
+const { getWorkspace, setWorkspaceInBuilder } = require('./workspace');
 
 const iframeEl = document.getElementById('iframe');
 const $ = window.jQuery;
-let ignoreMessage = true;
-
-function isIgnoreMessage() {
-    return ignoreMessage;
-}
-
-function setIgnoreMessage(ignore) {
-    ignoreMessage = ignore;
-}
-
-function sendMessage(msg) {
-    iframeEl.contentWindow.postMessage(msg, '*');
-}
-
-function initMessageListener() {
-    $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        const { type, html, js, relativePath } = newMsg;
-        if (type === ADD || type === EDIT) {
-            if (!isIgnoreMessage()) {
-                // When users open html pages in builder,
-                // we directly save new html content to fs
-                // without having to do anything with editor
-                if (builder.activePageRelativePath === relativePath) {
-                    if (builder.pages[relativePath] !== html) {
-                        fs.writeFile(relativePath, html);
-                        builder.pages[relativePath] = html;
-                    }
-                }
-            }
-        } else if (type === UPDATE_SHARED_JS) {
-            // User may choose to update shared js file without opening it in editor,
-            // we cannot save to current active editor
-            // So we directly update file in fs
-            fs.writeFile(path, js);
-        }
-    });
-}
 
 const ADD = 'add';
 const EDIT = 'edit';
@@ -55,13 +19,63 @@ class Message {
     }
 };
 
+function isIgnoreMessage() {
+    return getWorkspace() !== 'builder';
+}
+
+function sendMessage(msg) {
+    iframeEl.contentWindow.postMessage(msg, '*');
+}
+
+function initMessageListener() {
+    $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
+        const { type, html, js, relativePath, path } = newMsg;
+        if (type === ADD || type === EDIT) {
+            if (!isIgnoreMessage()) {
+                // When users open html pages in builder,
+                // we directly save new html content to fs
+                // without having to do anything with editor
+                if (builder.activePageRelativePath === relativePath) {
+                    if (builder.pages[relativePath].html !== html) {
+                        fs.writeFileInBuilder(relativePath, html, (err, payload) => {
+                            if (err) {
+                                return util.handleError(err);
+                            }
+                            builder.pages[relativePath].stat = payload.stat;
+                        });
+                        builder.pages[relativePath].html = html;
+                    }
+                }
+            }
+        } else if (type === UPDATE_SHARED_JS) {
+            // User may choose to update shared js file without opening it in editor,
+            // we cannot save to current active editor
+            // So we directly update file in fs
+            fs.writeFile(path, js);
+        }
+    });
+}
+
+const builder = {
+    activePageRelativePath: '',
+    pages: {}
+};
+
+function initBuilder(message, relativePath) {
+    builder.activePageRelativePath = relativePath;
+    builder.pages[relativePath] || (builder.pages[relativePath] = {});
+    setWorkspaceInBuilder();
+    sendMessage(message);
+}
+
 module.exports = {
     sendMessage,
     initMessageListener,
     Message,
-    setIgnoreMessage,
     isIgnoreMessage,
     ADD,
     EDIT,
-    UPDATE_SHARED_JS
+    UPDATE_SHARED_JS,
+    builder,
+    initBuilder
 };

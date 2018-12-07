@@ -7,22 +7,8 @@ const splitter = require('./splitter');
 const editor = require('./editor');
 const noide = require('./noide');
 const watch = require('./watch');
-const { initMessageListener, setIgnoreMessage } = require('./message');
-
-const workspacesEl = document.getElementById('workspaces');
-
-function setWorkspace(className) {
-  setIgnoreMessage(className != 'builder');
-  workspacesEl.className = className || 'welcome';
-}
-
-function setWorkspaceInEditor() {
-  setWorkspace('editor');
-}
-
-function setWorkspaceInBuilder() {
-  setWorkspace('builder');
-}
+const { initMessageListener } = require('./message');
+const { setWorkspace } = require('./workspace');
 
 window.onbeforeunload = function () {
   if (noide.dirty.length) {
@@ -137,9 +123,3 @@ client.connect(function (err) {
     })
   })
 });
-
-module.exports = {
-  setWorkspace,
-  setWorkspaceInBuilder,
-  setWorkspaceInEditor
-};

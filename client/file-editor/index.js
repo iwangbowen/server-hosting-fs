@@ -2,9 +2,7 @@ var page = require('page')
 var patch = require('../patch')
 var fs = require('../fs')
 var view = require('./view.html')
-const { sendMessage, ADD, Message } = require('../message');
-const builder = require('../builder');
-const { setWorkspaceInBuilder } = require('../index');
+const { ADD, Message, initBuilder } = require('../message');
 
 function FileEditor(el) {
   var model = {
@@ -33,13 +31,11 @@ function FileEditor(el) {
         // to allow it to register from the socket
         setTimeout(() => {
           if (openInBuilder) {
-            sendMessage(new Message({
+            initBuilder(new Message({
               type: ADD,
               template: template,
               relativePath: payload.relativePath
-            }));
-            setWorkspaceInBuilder();
-            builder.activePageRelativePath = payload.relativePath;
+            }), payload.relativePath);
           } else {
             page('/file?path=' + payload.relativePath);
           }

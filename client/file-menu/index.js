@@ -6,10 +6,8 @@ var view = require('./view.html');
 var copied;
 var $ = window.jQuery;
 var path = require('path');
-const { sendMessage, Message, EDIT, UPDATE_SHARED_JS } = require('../message');
+const { sendMessage, Message, EDIT, UPDATE_SHARED_JS, initBuilder } = require('../message');
 const noide = require('../noide');
-const { setWorkspaceInBuilder } = require('../index');
-const builder = require('../builder');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -101,36 +99,36 @@ function FileMenu(el) {
   function openInBuilder(file) {
     hide();
     let session = noide.getSession(file);
-    if (session) {
-      sendMessage(new Message({
+    const { relativePath } = file;
+
+    function initMessage() {
+      return new Message({
         type: EDIT,
         html: session.getValue(),
-        path: file.path
-      }));
-      setWorkspaceInBuilder();
-      builder.activePagePath = file.path;
+        path: file.path,
+        relativePath
+      });
+    }
+
+    if (session) {
+      initBuilder(initMessage(), relativePath);
     } else {
       fs.readFile(file.relativePath, function (err, payload) {
         if (err) {
           return util.handleError(err);
         }
         session = noide.addSession(file, payload.contents);
-        sendMessage(new Message({
-          type: EDIT,
-          html: session.getValue(),
-          path: file.path
-        }));
-        setWorkspaceInBuilder();
-        builder.activePagePath = file.path;
+        initBuilder(initMessage(), relativePath);
       })
     }
   }
 
   function updateSharedJS(file) {
-    const path = file.path;
+    const { path, relativePath } = file;
     sendMessage(new Message({
       type: UPDATE_SHARED_JS,
-      path
+      path,
+      relativePath
     }));
     hide();
   }

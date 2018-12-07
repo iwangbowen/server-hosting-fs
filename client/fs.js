@@ -18,6 +18,28 @@ function writeFile (path, contents, callback) {
   }, callback)
 }
 
+function writeFileInBuilder (path, contents, callback) {
+  client.request({
+    path: '/writefile-in-builder',
+    payload: {
+      path: path,
+      contents: contents
+    },
+    method: 'PUT'
+  }, callback)
+}
+
+function writeFileInBuilder (path, contents, callback) {
+  client.request({
+    path: '/writefile-in-builder',
+    payload: {
+      path: path,
+      contents: contents
+    },
+    method: 'PUT'
+  }, callback)
+}
+
 function mkdir (path, callback) {
   client.request({
     path: '/mkdir',
@@ -75,6 +97,7 @@ module.exports = {
   copy,
   readFile,
   writeFile,
+  writeFileInBuilder,
   rename,
   remove
 };
