@@ -6,7 +6,7 @@ var view = require('./view.html');
 var copied;
 var $ = window.jQuery;
 var path = require('path');
-const { sendMessage, Message, UPDATE_SHARED_JS } = require('../message');
+const { sendMessage, Message, UPDATE_SHARED_JS, ADD } = require('../message');
 const page = require('page');
 
 function FileMenu(el) {

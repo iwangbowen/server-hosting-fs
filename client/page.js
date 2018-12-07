@@ -53,7 +53,7 @@ module.exports = function initPage() {
             if (openInBuilder === 'true') {
                 initBuilder(initMessage(), relativePath);
             } else {
-                setSession()
+                setSession();
             }
         }
 
@@ -62,9 +62,9 @@ module.exports = function initPage() {
         } else {
             fs.readFile(relativePath, function (err, payload) {
                 if (err) {
-                    return util.handleError(err)
+                    return util.handleError(err);
                 }
-                session = noide.addSession(file, payload.contents)
+                session = noide.addSession(file, payload.contents);
                 initWorkspace();
             })
         }

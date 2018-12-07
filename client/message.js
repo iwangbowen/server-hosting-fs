@@ -30,7 +30,7 @@ function sendMessage(msg) {
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
         const { type, html, js, relativePath, path } = newMsg;
-        if (type === ADD || type === EDIT) {
+        if (type === EDIT) {
             if (!isIgnoreMessage()) {
                 // When users open html pages in builder,
                 // we directly save new html content to fs
@@ -47,11 +47,13 @@ function initMessageListener() {
                     }
                 }
             }
-        } else if (type === UPDATE_SHARED_JS) {
+        } else if (type === ADD) {
+            fs.writeFile(relativePath, html);
+        } else {
             // User may choose to update shared js file without opening it in editor,
             // we cannot save to current active editor
             // So we directly update file in fs
-            fs.writeFile(path, js);
+            fs.writeFile(relativePath, js);
         }
     });
 }
