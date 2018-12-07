@@ -6,8 +6,8 @@ var view = require('./view.html');
 var copied;
 var $ = window.jQuery;
 var path = require('path');
-const { sendMessage, Message, EDIT, UPDATE_SHARED_JS, initBuilder } = require('../message');
-const noide = require('../noide');
+const { sendMessage, Message, UPDATE_SHARED_JS } = require('../message');
+const page = require('page');
 
 function FileMenu(el) {
   var $el = $(el)
@@ -98,29 +98,7 @@ function FileMenu(el) {
 
   function openInBuilder(file) {
     hide();
-    let session = noide.getSession(file);
-    const { relativePath } = file;
-
-    function initMessage() {
-      return new Message({
-        type: EDIT,
-        html: session.getValue(),
-        path: file.path,
-        relativePath
-      });
-    }
-
-    if (session) {
-      initBuilder(initMessage(), relativePath);
-    } else {
-      fs.readFile(file.relativePath, function (err, payload) {
-        if (err) {
-          return util.handleError(err);
-        }
-        session = noide.addSession(file, payload.contents);
-        initBuilder(initMessage(), relativePath);
-      })
-    }
+    page(`/file?path=${file.relativePath}&openInBuilder=true`);
   }
 
   function updateSharedJS(file) {
