@@ -49,7 +49,7 @@ function initMessageListener() {
             }
         } else if (type === ADD) {
             fs.writeFile(relativePath, html);
-        } else {
+        } else if (type === UPDATE_SHARED_JS) {
             // User may choose to update shared js file without opening it in editor,
             // we cannot save to current active editor
             // So we directly update file in fs
@@ -63,11 +63,26 @@ const builder = {
     pages: {}
 };
 
+let isIframeLoaded = false;
+let pendingMessages = [];
+
+function setIframeLoaded() {
+    isIframeLoaded = true;
+}
+
+function sendPendingMessages() {
+    pendingMessages.forEach(sendMessage);
+}
+
 function initBuilder(message, relativePath) {
+    if (isIframeLoaded) {
+        sendMessage(message);
+    } else {
+        pendingMessages.push(message);
+    }
     builder.activePageRelativePath = relativePath;
     builder.pages[relativePath] || (builder.pages[relativePath] = {});
     setWorkspaceInBuilder();
-    sendMessage(message);
 }
 
 module.exports = {
@@ -79,5 +94,7 @@ module.exports = {
     EDIT,
     UPDATE_SHARED_JS,
     builder,
-    initBuilder
+    initBuilder,
+    setIframeLoaded,
+    sendPendingMessages
 };

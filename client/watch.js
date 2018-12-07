@@ -27,12 +27,12 @@ function watch() {
             file.stat = payload.stat;
             if (session.getValue() !== payload.contents) {
               session.setValue(payload.contents, true)
-              if (!isIgnoreMessage()) {
-                sendMessage(new Message({
-                  type: EDIT,
-                  html: session.getValue()
-                }));
-              }
+              // if (!isIgnoreMessage()) {
+              //   sendMessage(new Message({
+              //     type: EDIT,
+              //     html: session.getValue()
+              //   }));
+              // }
             }
           })
         }

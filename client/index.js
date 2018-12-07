@@ -4,7 +4,7 @@ const splitter = require('./splitter');
 const editor = require('./editor');
 const noide = require('./noide');
 const watch = require('./watch');
-const { initMessageListener } = require('./message');
+const { initMessageListener, setIframeLoaded, sendPendingMessages } = require('./message');
 const initPage = require('./page');
 
 window.onbeforeunload = function () {
@@ -12,6 +12,11 @@ window.onbeforeunload = function () {
     return 'Unsaved changes will be lost - are you sure you want to leave?';
   }
 }
+
+document.getElementById('iframe').onload = function () {
+  setIframeLoaded();
+  sendPendingMessages();
+};
 
 initMessageListener();
 
