@@ -112,17 +112,17 @@ function FileMenu(el) {
   }
 
   function mkdir(file) {
-    hide()
-    resetPasteBuffer()
-    fileEditor.mkdir(file.isDirectory ? file : file.parent)
+    hide();
+    resetPasteBuffer();
+    fileEditor.mkdir(file.isDirectory ? file : file.parent);
   }
 
   function remove(file) {
-    var path = file.relativePath
-    hide()
-    resetPasteBuffer()
-    if (window.confirm('Delete [' + path + ']')) {
-      fs.remove(path, callback)
+    const path = file.relativePath;
+    hide();
+    resetPasteBuffer();
+    if (window.confirm(`Delete ${path}`)) {
+      fs.remove(path, callback);
     }
   }
 
