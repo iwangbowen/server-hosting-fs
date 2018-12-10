@@ -1,5 +1,6 @@
 const fs = require('./fs');
 const util = require('./util');
+const noide = require('./noide');
 const { getWorkspace, setWorkspaceInBuilder } = require('./workspace');
 
 const iframeEl = document.getElementById('iframe');
@@ -35,7 +36,7 @@ function initMessageListener() {
                 // When users open html pages in builder,
                 // we directly save new html content to fs
                 // without having to do anything with editor
-                if (builder.activePageRelativePath === relativePath) {
+                if (noide.current.relativePath === relativePath) {
                     if (builder.pages[relativePath].html !== html) {
                         fs.writeFileInBuilder(relativePath, html, (err, payload) => {
                             if (err) {
@@ -59,7 +60,6 @@ function initMessageListener() {
 }
 
 const builder = {
-    activePageRelativePath: '',
     pages: {}
 };
 
@@ -80,7 +80,6 @@ function initBuilder(message, relativePath) {
     } else {
         pendingMessages.push(message);
     }
-    builder.activePageRelativePath = relativePath;
     builder.pages[relativePath] || (builder.pages[relativePath] = {});
     setWorkspaceInBuilder();
 }
