@@ -2,7 +2,7 @@ var fs = require('./fs')
 var client = require('./client')
 var util = require('./util')
 var noide = require('./noide')
-const { isIgnoreMessage, sendMessage, Message, EDIT } = require('./message');
+const { isInBuilder, sendMessage, Message, EDIT } = require('./message');
 
 function watch() {
   function handleError(err) {
@@ -27,7 +27,7 @@ function watch() {
             file.stat = payload.stat;
             if (session.getValue() !== payload.contents) {
               session.setValue(payload.contents, true)
-              // if (!isIgnoreMessage()) {
+              // if (isInBuilder()) {
               //   sendMessage(new Message({
               //     type: EDIT,
               //     html: session.getValue()

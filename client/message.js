@@ -20,8 +20,8 @@ class Message {
     }
 };
 
-function isIgnoreMessage() {
-    return getWorkspace() !== 'builder';
+function isInBuilder() {
+    return getWorkspace() === 'builder';
 }
 
 function sendMessage(msg) {
@@ -32,19 +32,23 @@ function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
         const { type, html, js, relativePath, path } = newMsg;
         if (type === EDIT) {
-            if (!isIgnoreMessage()) {
+            if (isInBuilder()) {
                 // When users open html pages in builder,
                 // we directly save new html content to fs
                 // without having to do anything with editor
                 if (noide.current.relativePath === relativePath) {
-                    if (builder.pages[relativePath].html !== html) {
-                        fs.writeFileInBuilder(relativePath, html, (err, payload) => {
-                            if (err) {
-                                return util.handleError(err);
-                            }
-                            builder.pages[relativePath].stat = payload.stat;
-                        });
-                        builder.pages[relativePath].html = html;
+                    const file = noide.current;
+                    const session = noide.getSession(file);
+                    if (session) {
+                        if (session.getValue() !== html) {
+                            session.setValue(html, true);
+                            fs.writeFileInBuilder(relativePath, html, (err, payload) => {
+                                if (err) {
+                                    return util.handleError(err);
+                                }
+                                file.stat = payload.stat;
+                            });
+                        }
                     }
                 }
             }
@@ -58,10 +62,6 @@ function initMessageListener() {
         }
     });
 }
-
-const builder = {
-    pages: {}
-};
 
 let isIframeLoaded = false;
 let pendingMessages = [];
@@ -80,7 +80,6 @@ function initBuilder(message, relativePath) {
     } else {
         pendingMessages.push(message);
     }
-    builder.pages[relativePath] || (builder.pages[relativePath] = {});
     setWorkspaceInBuilder();
 }
 
@@ -88,11 +87,10 @@ module.exports = {
     sendMessage,
     initMessageListener,
     Message,
-    isIgnoreMessage,
+    isInBuilder,
     ADD,
     EDIT,
     UPDATE_SHARED_JS,
-    builder,
     initBuilder,
     setIframeLoaded,
     sendPendingMessages
