@@ -44,7 +44,7 @@ client.connect(function (err) {
     // require('./recent')
 
     // Build the procsses pane
-    // var processesView = require('./processes')
+    var processesView = require('./processes')
 
     // Subscribe to watched file changes
     // that happen on the file system
@@ -59,12 +59,12 @@ client.connect(function (err) {
     /* Initialize the splitters */
     function resizeEditor() {
       editor.resize()
-      // processesView.editor.resize()
+      processesView.editor.resize()
     }
 
     splitter(document.getElementById('sidebar-workspaces'), false, resizeEditor);
     // splitter(document.getElementById('workspaces-info'), true, resizeEditor)
-    // splitter(document.getElementById('main-footer'), true, resizeEditor);
+    splitter(document.getElementById('main-footer'), true, resizeEditor);
 
     initPage();
   })
