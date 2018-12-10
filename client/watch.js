@@ -27,12 +27,14 @@ function watch() {
             file.stat = payload.stat;
             if (session.getValue() !== payload.contents) {
               session.setValue(payload.contents, true)
-              // if (isInBuilder()) {
-              //   sendMessage(new Message({
-              //     type: EDIT,
-              //     html: session.getValue()
-              //   }));
-              // }
+              if (isInBuilder()) {
+                sendMessage(new Message({
+                  type: EDIT,
+                  html: session.getValue(),
+                  path: file.path,
+                  relativePath: file.relativePath
+                }));
+              }
             }
           })
         }
