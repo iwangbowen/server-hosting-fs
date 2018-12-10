@@ -29,8 +29,6 @@ module.exports = function initPage() {
 
         function setSession() {
             setWorkspace('editor');
-            // Update state
-            noide.current = file;
             if (!noide.hasRecent(file)) {
                 noide.addRecent(file)
             }
@@ -50,6 +48,8 @@ module.exports = function initPage() {
         }
 
         function initWorkspace() {
+            // Update state
+            noide.current = file;
             if (openInBuilder === 'true') {
                 initBuilder(initMessage(), relativePath);
             } else {
