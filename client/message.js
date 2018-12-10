@@ -74,7 +74,7 @@ function sendPendingMessages() {
     pendingMessages.forEach(sendMessage);
 }
 
-function initBuilder(message, relativePath) {
+function initBuilder(message) {
     if (isIframeLoaded) {
         sendMessage(message);
     } else {

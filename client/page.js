@@ -9,12 +9,12 @@ const { initBuilder, EDIT, Message } = require('./message');
 module.exports = function initPage() {
     page('*', function (ctx, next) {
         // Update current file state
-        noide.current = null
-        next()
-    })
+        noide.current = null;
+        next();
+    });
 
     page('/', function (ctx) {
-        setWorkspace()
+        setWorkspace();
     })
 
     page('/file', function (ctx, next) {
@@ -29,9 +29,7 @@ module.exports = function initPage() {
 
         function setSession() {
             setWorkspace('editor');
-            if (!noide.hasRecent(file)) {
-                noide.addRecent(file)
-            }
+
             // Set the editor session
             editor.setSession(session.editSession)
             editor.resize()
@@ -50,8 +48,11 @@ module.exports = function initPage() {
         function initWorkspace() {
             // Update state
             noide.current = file;
+            if (!noide.hasRecent(file)) {
+                noide.addRecent(file);
+            }
             if (openInBuilder === 'true') {
-                initBuilder(initMessage(), relativePath);
+                initBuilder(initMessage());
             } else {
                 setSession();
             }
@@ -68,13 +69,13 @@ module.exports = function initPage() {
                 initWorkspace();
             })
         }
-    })
+    });
 
     page('*', function (ctx) {
-        setWorkspace('not-found')
-    })
+        setWorkspace('not-found');
+    });
 
     page({
         hashbang: true
-    })
+    });
 }
