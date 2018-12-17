@@ -30,7 +30,7 @@ function generateOptions(el, response) {
         });
     });
 
-$('form.form-box').find('input[type=file][data-url]').on('change', function () {
+function onFileInputChange() {
     var formData = new FormData();
     formData.append(this.name, this.files[0]);
     $.ajax({
@@ -51,7 +51,9 @@ $('form.form-box').find('input[type=file][data-url]').on('change', function () {
             });
         }
     });
-});
+}
+
+$('form.form-box').find('input[type=file][data-url]').on('change', onFileInputChange);
 function submitForm(form, url, successCb, errorCb) {
     var valid = true;
     form.find('input[required], select[required], textarea[required]')
