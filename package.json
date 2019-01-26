@@ -22,7 +22,7 @@
     "pkg": "pkg package.json",
     "zip:bin": "bestzip noide.bin.zip noide.exe noide.config.* *.bat RunHide.vbs",
     "zip:all": "bestzip noide.zip noide.bin.zip www",
-    "copy": "cpx client/**/*.html dist -C",
+    "copy": "cpx \"client/**/*.html\" dist -C",
     "babelify": "babel client -d dist",
     "build:app:js": "browserify dist/index.js -t [superviewify] -o server/public/js/index.js -d",
     "build:core:js": "browserify dist/core.js -o server/public/js/core.js",

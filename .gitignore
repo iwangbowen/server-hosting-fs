@@ -9,4 +9,4 @@ server-config.json
 *.zip
 dist
 server/public/css
-server/public/js
+server/public/js/*.js
