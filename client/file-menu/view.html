@@ -29,9 +29,8 @@
     <li key="divider-2" class="divider"></li>
     <li key="mkfile"><a onclick="{model.mkfile(file)}"><i class="fa fa-file"></i> Add new file</a>
     </li>
-    <li key="mkNewCustom"><a onclick="{model.mkNewPage(file, 'pds')}"><i class="fa fa-file"></i> Add blank custom</a>
-    </li>
-    <li key="mkNewGeneral"><a onclick="{model.mkNewPage(file, 'layout')}"><i class="fa fa-file"></i> Add blank general</a>
+    <li each="page in model.getTemplatePages()" key="{'mkNew' + page.name}">
+      <a onclick="{model.mkNewPage(file, page.name)}"><i class="fa fa-file"></i> {'Add new ' + page.name}</a>
     </li>
     <li key="mkdir"><a onclick="{model.mkdir(file)}"><i class="fa fa-folder"></i> Add new folder</a>
     </li>

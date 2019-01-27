@@ -4,7 +4,8 @@ const splitter = require('./splitter');
 const editor = require('./editor');
 const noide = require('./noide');
 const watch = require('./watch');
-const { initMessageListener, setIframeLoaded, sendPendingMessages } = require('./message');
+const { initMessageListener, setIframeLoaded,
+  sendPendingMessages, sendQueryTemplatePagesMessage } = require('./message');
 const initPage = require('./page');
 
 window.onbeforeunload = function () {
@@ -16,6 +17,7 @@ window.onbeforeunload = function () {
 document.getElementById('iframe').onload = function () {
   setIframeLoaded();
   sendPendingMessages();
+  sendQueryTemplatePagesMessage();
 };
 
 initMessageListener();

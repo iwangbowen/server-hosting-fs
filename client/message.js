@@ -9,6 +9,7 @@ const $ = window.jQuery;
 const ADD = 'add';
 const EDIT = 'edit';
 const UPDATE_SHARED_JS = 'updateSharedJS';
+const QUERY_TEMPLATE_PAGES = 'queryTemplatePages';
 class Message {
     constructor({ type, template, html, path, js, relativePath }) {
         this.type = type;
@@ -28,10 +29,22 @@ function sendMessage(msg) {
     iframeEl.contentWindow.postMessage(msg, '*');
 }
 
+let templatePages = [];
+
+function getTemplatePages() {
+    return templatePages;
+}
+
+function setTemplatePages(pages) {
+    templatePages = pages;
+}
+
 function initMessageListener() {
     $(window).on('message', ({ originalEvent: { data: newMsg } }) => {
-        const { type, html, js, relativePath, path } = newMsg;
-        if (type === EDIT) {
+        const { type, html, js, relativePath, path, templatePages } = newMsg;
+        if (type === QUERY_TEMPLATE_PAGES) {
+            setTemplatePages(templatePages);
+        } else if (type === EDIT) {
             if (isInBuilder()) {
                 // When users open html pages in builder,
                 // we directly save new html content to fs
@@ -74,6 +87,12 @@ function sendPendingMessages() {
     pendingMessages.forEach(sendMessage);
 }
 
+function sendQueryTemplatePagesMessage() {
+    sendMessage(new Message({
+        type: QUERY_TEMPLATE_PAGES
+    }));
+}
+
 function initBuilder(message) {
     if (isIframeLoaded) {
         sendMessage(message);
@@ -93,5 +112,7 @@ module.exports = {
     UPDATE_SHARED_JS,
     initBuilder,
     setIframeLoaded,
-    sendPendingMessages
+    sendPendingMessages,
+    sendQueryTemplatePagesMessage,
+    getTemplatePages
 };
